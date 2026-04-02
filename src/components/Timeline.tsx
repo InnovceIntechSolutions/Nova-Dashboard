@@ -17,39 +17,48 @@ export interface TimelineProps {
   events?: TimelineEvent[];
   showCount?: number;
   loadMoreLink?: string;
-  style?: React.CSSProperties;
 }
 
-const Timeline: React.FC<TimelineProps> = ({ title, subtitle, events = [], showCount = 6, loadMoreLink, style }) => {
+const Timeline: React.FC<TimelineProps> = ({ title, subtitle, events = [], showCount = 6, loadMoreLink }) => {
   const displayEvents = events.slice(0, showCount);
 
   return (
-    <div className="timeline card card-body" >
-      <div className="card-header-section">
-        <h5 className="card-title">{title || 'Activity'}</h5>
-        {subtitle && <p className="card-subtitle">{subtitle}</p>}
+    <div className="timeline card border-0 shadow-sm h-100">
+      <div className="card-header bg-transparent border-bottom">
+        <div className="d-flex justify-content-between align-items-center">
+          <div>
+            <h5 className="mb-0">{title || 'Activity'}</h5>
+            {subtitle && <p className="text-muted mb-0">{subtitle}</p>}
+          </div>
+        </div>
       </div>
 
-      <div className="timeline-wrapper">
+      <div className="card-body">
         {displayEvents.length > 0 ? (
-          displayEvents.map((event, index) => (
-            <div key={event.id} className="timeline-event">
-              {index < displayEvents.length - 1 && <div className="timeline-line" />}
-              <div className="timeline-dot">{event.icon}</div>
-              <div className="timeline-content">
-                <h6 className="timeline-title">{event.title}</h6>
-                <p className="timeline-description">{event.description}</p>
-                <p className="timeline-timestamp">⏱️ {event.timestamp}</p>
+          <div className="timeline-wrapper">
+            {displayEvents.map((event, index) => (
+              <div key={event.id} className="timeline-event d-flex align-items-start mb-4">
+                <div className="timeline-dot bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-3">
+                  {event.icon}
+                </div>
+                <div className="timeline-content flex-grow-1">
+                  <h6 className="timeline-title mb-1">{event.title}</h6>
+                  <p className="timeline-description text-muted mb-2">{event.description}</p>
+                  <p className="timeline-timestamp small text-muted">⏱️ {event.timestamp}</p>
+                </div>
+                {index < displayEvents.length - 1 && <div className="timeline-line border-start border-2 ms-4" />}
               </div>
-            </div>
-          ))
+            ))}
+          </div>
         ) : (
-          <p className="no-data">No activity available</p>
+          <p className="text-center text-muted">No activity available</p>
         )}
       </div>
 
       {loadMoreLink && events.length > showCount && (
-        <a href={loadMoreLink} className="view-all-link">View More Activity →</a>
+        <div className="card-footer bg-transparent border-top text-center">
+          <a href={loadMoreLink} className="btn btn-link text-decoration-none">View More Activity →</a>
+        </div>
       )}
     </div>
   );

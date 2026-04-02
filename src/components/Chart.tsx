@@ -12,7 +12,7 @@ const styles: Record<string, React.CSSProperties> = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    height: '100%',
+    height: '400px'
   },
   header: {
     marginBottom: 8,

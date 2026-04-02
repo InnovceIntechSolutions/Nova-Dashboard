@@ -13,26 +13,28 @@ export interface StatsCardProps {
 
 const StatsCard: React.FC<StatsCardProps> = ({ title, value, subtitle, trend, icon, details, style }) => {
   return (
-    <div className="stats-card card card-body" >
-      <div className="stats-header">
-        {icon && <span className="stats-icon" role="img" aria-label="icon">{icon}</span>}
-        <div>
-          <h6 className="stats-title">{title || 'Statistic'}</h6>
-          {subtitle && <p className="stats-subtitle">{subtitle}</p>}
+    <div className="card shadow-sm border-0 rounded-3" >
+      <div className="card-body">
+        <div className="d-flex align-items-center mb-3">
+          {icon && <span className="fs-2 me-3 text-primary">{icon}</span>}
+          <div>
+            <h6 className="card-title mb-1 text-muted">{title || 'Statistic'}</h6>
+            {subtitle && <p className="card-subtitle mb-2 text-muted">{subtitle}</p>}
+          </div>
         </div>
+        <p className="display-6 mb-2 text-dark">{value || '—'}</p>
+        {trend && <p className={`mb-0 text-${trend.includes('↑') ? 'success' : trend.includes('↓') ? 'danger' : 'muted'}`}><strong>{trend}</strong></p>}
+        {details && details.length > 0 && (
+          <div className="mt-3">
+            {details.map((detail, idx) => (
+              <div key={idx} className="d-flex justify-content-between mb-2">
+                <span className="text-muted">{detail.label}</span>
+                <span className="text-dark">{detail.value}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-      <p className="stats-value">{value || '—'}</p>
-      {trend && <p className="stats-trend">{trend}</p>}
-      {details && details.length > 0 && (
-        <div className="stats-details">
-          {details.map((detail, idx) => (
-            <div key={idx} className="detail-row">
-              <span className="detail-label">{detail.label}</span>
-              <span className="detail-value">{detail.value}</span>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

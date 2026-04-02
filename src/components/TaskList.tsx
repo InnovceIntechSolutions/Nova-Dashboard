@@ -20,54 +20,66 @@ export interface TaskListProps {
   tasks?: Task[];
   showCount?: number;
   viewAllLink?: string;
-  style?: React.CSSProperties;
 }
 
-const TaskList: React.FC<TaskListProps> = ({ title, subtitle, tasks = [], showCount = 5, viewAllLink, style }) => {
+const TaskList: React.FC<TaskListProps> = ({ title, subtitle, tasks = [], showCount = 5, viewAllLink }) => {
   const displayTasks = tasks.slice(0, showCount);
 
   return (
-    <div className="task-list card card-body" >
-      <div className="card-header-section">
-        <h5 className="card-title">{title || 'Tasks'}</h5>
-        {subtitle && <p className="card-subtitle">{subtitle}</p>}
+    <div className="task-list card border-0 shadow-sm h-100" >
+      <div className="card-header bg-transparent border-bottom">
+        <div className="d-flex justify-content-between align-items-center">
+          <div>
+            <h5 className="mb-0">{title || 'Tasks'}</h5>
+            {subtitle && <p className="text-muted mb-0">{subtitle}</p>}
+          </div>
+          {tasks.length > 0 && (
+            <span className="badge bg-info">{tasks.length} Tasks</span>
+          )}
+        </div>
       </div>
-      
-      <div className="task-items">
+
+      <div className="card-body p-0">
         {displayTasks.length > 0 ? (
           displayTasks.map((task) => (
-            <div key={task.id} className="task-item">
-              <div className="task-content">
-                <h6 className="task-title">{task.title}</h6>
-                <p className="task-description">{task.description}</p>
-                <p className="task-due-date">📅 {task.dueDate}</p>
+            <div key={task.id} className="task-item d-flex justify-content-between align-items-start p-3 border-bottom">
+              <div>
+                <h6 className="task-title mb-1">{task.title}</h6>
+                <p className="task-description text-muted mb-1">{task.description}</p>
+                <p className="task-due-date small text-muted">Due: {task.dueDate}</p>
               </div>
-              <span className="task-badge">{task.badge}</span>
-              {task.actions && task.actions.length > 0 && (
-                <div className="task-actions">
-                  {task.actions.map((action, idx) => (
-                    <button
-                      key={idx}
-                      className={`action-btn ${action.style === 'primary' ? 'action-btn-primary' : 'action-btn-secondary'}`}
-                    >
-                      {action.label}
-                    </button>
-                  ))}
-                </div>
-              )}
+              <div className="text-end">
+                <span className={`badge rounded-pill bg-${task.priority === 'High' ? 'danger' : task.priority === 'Medium' ? 'warning' : 'success'}`}>
+                  {task.badge}
+                </span>
+                {task.actions && task.actions.length > 0 && (
+                  <div className="mt-2 d-flex gap-2 justify-content-end w-100">
+                    {task.actions.map((action, idx) => (
+                      <button
+                        key={idx}
+                        className={`btn btn-sm ${action.style === 'primary' ? 'btn-outline-primary' : 'btn-outline-secondary'} mb-1`}
+                        onClick={() => window.location.href = action.action}
+                      >
+                        {action.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           ))
         ) : (
-          <p className="no-data">No tasks available</p>
+          <p className="text-center text-muted">No tasks available</p>
         )}
       </div>
 
       {viewAllLink && tasks.length > showCount && (
-        <a href={viewAllLink} className="view-all-link">View All Tasks →</a>
+        <div className="card-footer bg-transparent border-top text-center">
+          <a href={viewAllLink} className="btn btn-link text-decoration-none">View All Tasks →</a>
+        </div>
       )}
     </div>
   );
 };
 
 export default TaskList;
-

@@ -1,5 +1,6 @@
 import React from 'react';
 import type { WidgetLayout } from '../constants/types';
+
 import Calendar from '../components/Calendar';
 import Chart from '../components/Chart';
 import Header from '../components/Header';
@@ -17,7 +18,7 @@ interface DashboardProps {
   layoutData: WidgetLayout[];
 }
 
-const componentMap: { [key: string]: React.ComponentType<any> } = {
+const componentMap: Record<string, React.ComponentType<any>> = {
   Chart,
   ProgressBar,
   StatsCard,
@@ -32,31 +33,68 @@ const componentMap: { [key: string]: React.ComponentType<any> } = {
 };
 
 const Dashboard: React.FC<DashboardProps> = ({ layoutData }) => {
+  
+  // ✅ Render component safely
   const renderWidget = (item: WidgetLayout) => {
     const Component = componentMap[item.component];
-    return Component ? <Component {...item.props} /> : <Shimmer />;
+    if (!Component) return <Shimmer />;
+
+    return <Component {...item.props} />;
   };
 
-  const getGridColSpan = (span: number) => {
-    return `span ${Math.min(span, 12)}`;
+  // ✅ Bootstrap column mapping
+  const getColClass = (span: number) => {
+    const safeSpan = Math.min(Math.max(span, 1), 12);
+    return `col-12 col-md-${safeSpan}`;
   };
+
+  // ✅ Group by row
+  const groupedByRow = layoutData.reduce<Record<number, WidgetLayout[]>>(
+    (acc, item) => {
+      const row = item.position?.row ?? 0;
+
+      if (!acc[row]) acc[row] = [];
+
+      acc[row].push(item);
+      return acc;
+    },
+    {}
+  );
+
+  // ✅ Sort rows
+  const sortedRows = Object.keys(groupedByRow)
+    .map(Number)
+    .sort((a, b) => a - b);
 
   return (
-    <div className="dashboard">
-      <div className="dashboard-grid">
-        {layoutData.map((item: WidgetLayout) => (
-          <div
-            key={item.id}
-            className="dashboard-widget"
-            style={{
-              gridColumn: getGridColSpan(item.position.span || 3),
-                gridRow: `span ${item.position.row || 1}`,
-            }}
-          >
-            {renderWidget(item)}
+    <div className="container-fluid py-3">
+      
+      {sortedRows.map((row) => {
+        const widgets = groupedByRow[row];
+
+        // ✅ Sort columns inside row
+        const sortedWidgets = widgets.sort(
+          (a, b) => (a.position?.column ?? 0) - (b.position?.column ?? 0)
+        );
+
+        return (
+          <div key={row} className="row g-3 mb-2">
+            {sortedWidgets.map((item) => (
+              <div
+                key={item.id}
+                className={getColClass(item.position?.span || 12)}
+              >
+                <div
+                 
+                  className="h-100"
+                >
+                  {renderWidget(item)}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 };

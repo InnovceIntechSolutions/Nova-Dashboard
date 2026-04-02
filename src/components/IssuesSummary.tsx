@@ -15,77 +15,79 @@ export interface IssuesSummaryProps {
   subtitle?: string;
   issues?: IssueSummary[];
   trend?: { current: number; previous: number; changePercent: number; direction: string };
-  style?: React.CSSProperties;
 }
 
-const IssuesSummary: React.FC<IssuesSummaryProps> = ({ title, subtitle, issues = [], trend, style }) => {
+const IssuesSummary: React.FC<IssuesSummaryProps> = ({ title, subtitle, issues = [], trend }) => {
   const getSeverityColor = (severity: string) => {
     switch (severity?.toUpperCase()) {
       case 'HIGH':
-        return '#e74c3c';
+        return 'bg-danger text-white';
       case 'MEDIUM':
-        return '#f39c12';
+        return 'bg-warning text-dark';
       case 'LOW':
-        return '#4caf50';
+        return 'bg-success text-white';
       default:
-        return '#95a5a6';
+        return 'bg-secondary text-white';
     }
   };
 
   return (
-    <div className="issues-summary card card-body" >
-      <div className="card-header-section">
-        <h5 className="card-title">{title || 'Issues'}</h5>
-        {subtitle && <p className="card-subtitle">{subtitle}</p>}
+    <div className="issues-summary card shadow-sm border-0 h-100">
+      <div className="card-header bg-transparent border-bottom">
+        <h5 className="card-title mb-0">{title || 'Issues'}</h5>
+        {subtitle && <p className="card-subtitle text-muted">{subtitle}</p>}
       </div>
 
       {trend && (
-        <div className="trend-indicator" style={{
-          borderLeft: `3px solid ${trend.direction === 'up' ? '#e74c3c' : '#4caf50'}`,
-        }}>
-          Trend: {trend.direction === 'up' ? '📈' : '📉'} {Math.abs(trend.changePercent)}% change
-          ({trend.previous} → {trend.current})
+        <div className={`trend-indicator p-3 ${trend.direction === 'up' ? 'bg-light' : 'bg-success'}`}>
+          <strong>Trend:</strong> {trend.direction === 'up' ? '📈' : '📉'}
+          {Math.abs(trend.changePercent)}% change ({trend.previous} → {trend.current})
         </div>
       )}
 
-      <div className="issues-list">
+      <div className="card-body p-0">
         {issues.length > 0 ? (
-          issues.map((issue, idx) => (
-            <div key={idx} className="issue-item" style={{
-              borderLeft: `3px solid ${getSeverityColor(issue.severity)}`,
-            }}>
-              <div className="issue-header">
-                <span className="issue-icon">{issue.icon}</span>
-                <div className="issue-info">
-                  <h6 className="issue-category">{issue.category}</h6>
-                  <p className="issue-metadata">
-                    <strong>{issue.count}</strong> item{issue.count !== 1 ? 's' : ''}
-                    <span className="issue-severity" style={{ borderColor: getSeverityColor(issue.severity) }}>
-                      {issue.severity}
-                    </span>
-                  </p>
-                </div>
-              </div>
+          <ul className="list-unstyled">
+            {issues.map((issue, idx) => (
+              <li key={idx} className="issue-item  border-bottom d-flex align-items-start p-3" style={{ borderColor: getSeverityColor(issue.severity) }}>
+                <div className='w-100'>
+                  <div className="d-flex align-items-center">
+                    {/* <div className="issue-icon me-1">
+                      <span className="fs-4">{issue.icon}</span>
+                    </div> */}
+                    <div className="issue-info flex-grow-1">
+                      <h6 className="issue-category mb-1">{issue.category}</h6>
+                      <p className="issue-metadata text-muted">
+                        <strong>{issue.count}</strong> item{issue.count !== 1 ? 's' : ''}{' '}
+                        <span className={`badge ${getSeverityColor(issue.severity)} ms-2`}>
+                          {issue.severity}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
 
-              {issue.details && issue.details.length > 0 && (
-                <div className="issue-details">
-                  {issue.details.map((detail, didx) => (
-                    <p key={didx} className="issue-detail-line">
-                      • {Object.values(detail).join(': ')}
-                    </p>
-                  ))}
-                </div>
-              )}
+                  {issue.details && issue.details.length > 0 && (
+                    <div className="issue-details">
+                      {issue.details.map((detail, didx) => (
+                        <p key={didx} className="text-muted">
+                          • {Object.values(detail).join(': ')}
+                        </p>
+                      ))}
+                    </div>
+                  )}
 
-              {issue.action && (
-                <a href={issue.action.link} className="issue-action-link">
-                  {issue.action.label} →
-                </a>
-              )}
-            </div>
-          ))
+                </div>
+
+                {issue.action && (
+                  <a href={issue.action.link} className="btn btn-link p-0 d-flex w-100 justify-content-end">
+                    {issue.action.label} →
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
         ) : (
-          <p className="no-data">No issues found</p>
+          <p className="text-center text-muted">No issues found</p>
         )}
       </div>
     </div>
