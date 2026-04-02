@@ -483,7 +483,7 @@
         "type": "component",
         "component": "Chart",
         "props": {
-          "chartType": "doughnut",
+          "chartType": "bar",
           "title": "Invoice Status Breakdown",
           "subtitle": "Last 3 Months",
           "data": {
@@ -551,7 +551,7 @@
         "type": "component",
         "component": "Chart",
         "props": {
-          "chartType": "line",
+          "chartType": "halfDoughnut",
           "title": "Payment Trend",
           "subtitle": "Last 6 Months",
           "data": {
