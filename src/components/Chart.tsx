@@ -6,6 +6,7 @@ import BarChart      from '../components/charts/Barchart/BarChart';
 import PieChart      from '../components/charts/Piechart/PieChart';
 import DoughnutChart from '../components/charts/DoughnutChart/DoughnutChart';
 import RadarChart   from '../components/charts/Radarchart/RadarChart';
+import HeatmapChart from '../components/Heatmap/HeatmapOnCartesian';
 import type { ChartProps } from '../Types/types';
 
 const styles: Record<string, React.CSSProperties> = {
@@ -88,6 +89,7 @@ const Chart: React.FC<ChartProps> = ({
       case 'pie':      return <PieChart      {...sharedProps} />;
       case 'doughnut': return <DoughnutChart {...sharedProps} />;
       case 'radar':    return <RadarChart    {...sharedProps} />;
+      case 'heatmap':  return <HeatmapChart  {...sharedProps} />;
       case 'line':
       default:         return <LineChart     {...sharedProps} />;
     }
