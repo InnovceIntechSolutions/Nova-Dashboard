@@ -8,25 +8,25 @@ import type { BaseChartProps } from '../../../Types/types';
 
 const LineChart: React.FC<BaseChartProps> = ({ data, options = {} }) => {
   const echartsOption = useMemo(() => {
-    const series = data.datasets.map((ds, i) => ({
-      name: ds.label ?? `Series ${i + 1}`,
-      type: 'line',
-      data: ds.data,
-      smooth: ds.tension !== undefined ? ds.tension > 0 : true,
-      symbol: 'circle',
-      symbolSize: 6,
-      lineStyle: {
-        color: (ds.borderColor as string) ?? COLORS[i % COLORS.length],
-        width: ds.borderWidth ?? 2,
-      },
-      itemStyle: {
-        color: (ds.borderColor as string) ?? COLORS[i % COLORS.length],
-      },
-      areaStyle:
-        ds.fill !== false && ds.backgroundColor
-          ? { color: ds.backgroundColor as string }
-          : undefined,
-    }));
+  const series = (data?.datasets ?? []).map((ds, i) => ({
+  name: ds.label ?? `Series ${i + 1}`,
+  type: 'line',
+  data: ds.data ?? [],
+  smooth: ds.tension !== undefined ? ds.tension > 0 : true,
+  symbol: 'circle',
+  symbolSize: 6,
+  lineStyle: {
+    color: (ds.borderColor as string) ?? COLORS[i % COLORS.length],
+    width: ds.borderWidth ?? 2,
+  },
+  itemStyle: {
+    color: (ds.borderColor as string) ?? COLORS[i % COLORS.length],
+  },
+  areaStyle:
+    ds.fill !== false && ds.backgroundColor
+      ? { color: ds.backgroundColor as string }
+      : undefined,
+}));
 
     return {
       color: COLORS,

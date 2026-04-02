@@ -1,629 +1,443 @@
 {
   "dashboard": {
-    "name": "Supplier Dashboard",
-    "userType": "supplier",
+    "name": "Buyer Dashboard",
+    "userType": "buyer",
     "layout": [
-     
       {
-        "id": "kpi_active_pos",
+        "id": "kpi_total_pos",
         "type": "component",
         "component": "StatsCard",
         "props": {
-          "title": "Active POs",
-          "value": "24",
-          "subtitle": "Open Value: ₹15.2M",
-          "trend": "+3 from last month",
-          "icon": "📋",
+          "title": "Total Purchase Orders",
+          "value": "42",
+          "subtitle": "Total Value: ₹28.5M",
+          "trend": "+5 this month",
+          "icon": "📦",
           "details": [
-            { "label": "Open Quantity", "value": "1,250 items" },
-            { "label": "Avg PO Age", "value": "12 days" }
+            {
+              "label": "Open POs",
+              "value": "18"
+            },
+            {
+              "label": "Closed POs",
+              "value": "24"
+            }
           ]
         },
         "position": {
-          "row": 2,
+          "row": 1,
           "column": 1,
           "span": 3
-        },
-        "dataSource": {
-          "type": "api",
-          "endpoint": "/api/supplier/dashboard/kpis/active-pos",
-          "refreshInterval": 300000
         }
       },
       {
-        "id": "kpi_invoices_month",
+        "id": "kpi_pending_approvals",
         "type": "component",
         "component": "StatsCard",
         "props": {
-          "title": "Invoices This Month",
-          "value": "18",
-          "subtitle": "Total: ₹2.5M",
-          "trend": "↑ 12% vs last month",
-          "icon": "📄",
+          "title": "Pending Approvals",
+          "value": "7",
+          "subtitle": "Requires Action",
+          "trend": "↑ 2 urgent",
+          "icon": "⏳",
           "details": [
-            { "label": "Approved", "value": "15" },
-            { "label": "Pending", "value": "3" }
+            {
+              "label": "Invoices",
+              "value": "4"
+            },
+            {
+              "label": "POs",
+              "value": "3"
+            }
           ]
         },
-       
         "position": {
-          "row": 2,
+          "row": 1,
           "column": 4,
           "span": 3
-        },
-        "dataSource": {
-          "type": "api",
-          "endpoint": "/api/supplier/dashboard/kpis/invoices",
-          "refreshInterval": 300000
         }
       },
       {
-        "id": "kpi_payment_received",
+        "id": "kpi_spend_month",
         "type": "component",
         "component": "StatsCard",
         "props": {
-          "title": "Payment Received",
-          "value": "₹1.8M",
-          "subtitle": "This Month",
-          "trend": "Outstanding: ₹700K",
+          "title": "Spend This Month",
+          "value": "₹4.2M",
+          "subtitle": "Budget: ₹5M",
+          "trend": "84% utilized",
           "icon": "💰",
           "details": [
-            { "label": "Received", "value": "72% of invoiced" },
-            { "label": "Avg Cycle", "value": "23 days" }
+            {
+              "label": "CapEx",
+              "value": "₹2.5M"
+            },
+            {
+              "label": "OpEx",
+              "value": "₹1.7M"
+            }
           ]
         },
         "position": {
-          "row": 2,
+          "row": 1,
           "column": 7,
           "span": 3
-        },
-        "dataSource": {
-          "type": "api",
-          "endpoint": "/api/supplier/dashboard/kpis/payments",
-          "refreshInterval": 300000
         }
       },
       {
-        "id": "kpi_quality_score",
+        "id": "kpi_supplier_perf",
         "type": "component",
         "component": "StatsCard",
         "props": {
-          "title": "Quality Score",
-          "value": "92%",
-          "subtitle": "Performance Rating",
-          "trend": "↑ +2% improvement",
+          "title": "Supplier Performance",
+          "value": "89%",
+          "subtitle": "Avg Score",
+          "trend": "↓ 1.5%",
           "icon": "⭐",
           "details": [
-            { "label": "Deviations", "value": "3 this month" },
-            { "label": "Trend", "value": "Improving 🟢" }
+            {
+              "label": "On-Time Delivery",
+              "value": "91%"
+            },
+            {
+              "label": "Quality Score",
+              "value": "87%"
+            }
           ]
         },
         "position": {
-          "row": 2,
+          "row": 1,
           "column": 10,
           "span": 3
-        },
-        "dataSource": {
-          "type": "api",
-          "endpoint": "/api/supplier/dashboard/kpis/quality",
-          "refreshInterval": 300000
         }
       },
       {
-        "id": "task_workbench",
+        "id": "buyer_tasks",
         "type": "component",
         "component": "TaskList",
         "props": {
-          "title": "🔔 ACTION REQUIRED",
-          "subtitle": "8 tasks pending",
+          "title": "🔔 WORK QUEUE",
+          "subtitle": "6 tasks pending",
           "tasks": [
             {
               "id": "task_1",
-              "type": "PO_ACK_PENDING",
               "priority": "URGENT",
-              "title": "Acknowledge PO #PO-2026-0045",
-              "description": "New PO received - Acknowledgment required",
-              "dueDate": "Today 5:00 PM",
-              "daysRemaining": 0,
-              "badge": "🔴 DUE TODAY",
+              "title": "Approve Invoice INV-2026-101",
+              "description": "Pending approval from finance",
+              "dueDate": "Today 4:00 PM",
+              "badge": "🔴 URGENT",
               "actions": [
-                { "label": "Acknowledge Now", "action": "acknowledge_po", "style": "primary" }
-              ],
-              "metadata": {
-                "po_number": "PO-2026-0045",
-                "value": "₹850,000",
-                "items": 12
-              }
+                {
+                  "label": "Approve",
+                  "action": "approve_invoice",
+                  "style": "primary"
+                }
+              ]
             },
             {
               "id": "task_2",
-              "type": "INVOICE_REJECTED",
               "priority": "HIGH",
-              "title": "Fix & Resubmit Invoice #INV-2026-089",
-              "description": "Rejected: Tax calculation mismatch",
-              "dueDate": "Mar 28, 2026",
-              "daysRemaining": 2,
-              "badge": "🟡 HIGH PRIORITY",
+              "title": "Review PO Change Request",
+              "description": "Supplier requested qty update",
+              "dueDate": "Tomorrow",
+              "badge": "🟡 HIGH",
               "actions": [
-                { "label": "View Details", "action": "view_invoice", "style": "secondary" },
-                { "label": "Resubmit", "action": "resubmit_invoice", "style": "primary" }
-              ],
-              "metadata": {
-                "invoice_number": "INV-2026-089",
-                "amount": "₹235,000",
-                "rejection_reason": "Tax mismatch - CGST/SGST incorrect"
-              }
-            },
-            {
-              "id": "task_3",
-              "type": "ASN_PENDING",
-              "priority": "HIGH",
-              "title": "Create ASN for PO #PO-2026-0041",
-              "description": "Expected delivery approaching - Submit ASN",
-              "dueDate": "Mar 27, 2026",
-              "daysRemaining": 1,
-              "badge": "🟡 DUE TOMORROW",
-              "actions": [
-                { "label": "Create ASN", "action": "create_asn", "style": "primary" }
-              ],
-              "metadata": {
-                "po_number": "PO-2026-0041",
-                "delivery_date": "Mar 30, 2026",
-                "items": 8
-              }
-            },
-            {
-              "id": "task_4",
-              "type": "IRN_FAILED",
-              "priority": "URGENT",
-              "title": "Fix IRN for Invoice #INV-2026-085",
-              "description": "IRN generation failed - Duplicate IRN error",
-              "dueDate": "Today 6:00 PM",
-              "daysRemaining": 0,
-              "badge": "🔴 URGENT",
-              "actions": [
-                { "label": "Retry IRN", "action": "retry_irn", "style": "primary" }
-              ],
-              "metadata": {
-                "invoice_number": "INV-2026-085",
-                "error": "Duplicate IRN detected",
-                "retry_count": 1
-              }
-            },
-            {
-              "id": "task_5",
-              "type": "DOCS_MISSING",
-              "priority": "NORMAL",
-              "title": "Upload Packing List for ASN-089",
-              "description": "Supporting document required",
-              "dueDate": "Mar 29, 2026",
-              "daysRemaining": 3,
-              "badge": "🟢 NORMAL",
-              "actions": [
-                { "label": "Upload Now", "action": "upload_document", "style": "primary" }
-              ],
-              "metadata": {
-                "asn_number": "ASN-2026-089",
-                "missing_docs": ["Packing List"]
-              }
+                {
+                  "label": "Review",
+                  "action": "review_po",
+                  "style": "primary"
+                }
+              ]
             }
-          ],
-          "showCount": 5,
-          "viewAllLink": "/tasks"
-        },
-        "style": {
-          "backgroundColor": "#FFFFFF",
-          "minHeight": "450px",
-          "boxShadow": "0 8px 32px rgba(0, 0, 0, 0.1)",
-          "borderRadius": "12px",
-          "padding": "20px"
+          ]
         },
         "position": {
-          "row": 3,
+          "row": 2,
           "column": 1,
           "span": 6
-        },
-        "dataSource": {
-          "type": "api",
-          "endpoint": "/api/supplier/dashboard/tasks",
-          "refreshInterval": 60000
         }
       },
       {
-        "id": "activity_timeline",
+        "id": "recent_activity",
         "type": "component",
         "component": "Timeline",
         "props": {
           "title": "📅 RECENT ACTIVITY",
-          "subtitle": "Last 30 days",
           "events": [
             {
-              "id": "event_1",
-              "type": "INVOICE_APPROVED",
+              "id": "e1",
               "icon": "🟢",
-              "title": "Invoice #INV-2026-091 Approved",
-              "description": "Amount: ₹125,000 | PO: PO-2026-0045",
-              "timestamp": "Mar 26, 2026 - 3:45 PM",
-              "details": {
-                "invoice_number": "INV-2026-091",
-                "amount": 125000,
-                "po_number": "PO-2026-0045",
-                "status": "APPROVED"
-              }
+              "title": "Invoice Approved",
+              "timestamp": "Today"
             },
             {
-              "id": "event_2",
-              "type": "ASN_SUBMITTED",
-              "icon": "🟡",
-              "title": "ASN #ASN-2026-034 Submitted",
-              "description": "PO: PO-2026-0043 | Items: 5",
-              "timestamp": "Mar 26, 2026 - 10:30 AM",
-              "details": {
-                "asn_number": "ASN-2026-034",
-                "po_number": "PO-2026-0043",
-                "items": 5
-              }
-            },
-            {
-              "id": "event_3",
-              "type": "INVOICE_REJECTED",
-              "icon": "🔴",
-              "title": "Invoice #INV-2026-089 Rejected",
-              "description": "Reason: Tax calculation mismatch",
-              "timestamp": "Mar 25, 2026 - 4:15 PM",
-              "details": {
-                "invoice_number": "INV-2026-089",
-                "rejection_reason": "Tax mismatch"
-              }
-            },
-            {
-              "id": "event_4",
-              "type": "PAYMENT_RECEIVED",
-              "icon": "🟢",
-              "title": "Payment Received: ₹450,000",
-              "description": "Invoice: INV-2026-078",
-              "timestamp": "Mar 25, 2026 - 11:00 AM",
-              "details": {
-                "payment_amount": 450000,
-                "invoice_number": "INV-2026-078"
-              }
-            },
-            {
-              "id": "event_5",
-              "type": "PO_RECEIVED",
+              "id": "e2",
               "icon": "🔵",
-              "title": "New PO Received: PO-2026-0045",
-              "description": "Value: ₹850,000 | Items: 12",
-              "timestamp": "Mar 24, 2026 - 2:30 PM",
-              "details": {
-                "po_number": "PO-2026-0045",
-                "value": 850000,
-                "items": 12
-              }
-            },
-            {
-              "id": "event_6",
-              "type": "GRN_GENERATED",
-              "icon": "🟢",
-              "title": "GRN Generated: GRN-2026-156",
-              "description": "ASN: ASN-2026-032 | Qty: 500 units",
-              "timestamp": "Mar 23, 2026 - 9:00 AM",
-              "details": {
-                "grn_number": "GRN-2026-156",
-                "asn_number": "ASN-2026-032",
-                "quantity": 500
-              }
+              "title": "PO Created",
+              "timestamp": "Yesterday"
             }
-          ],
-          "showCount": 6,
-          "loadMoreLink": "/activity"
+          ]
         },
-        "style": {
-          "backgroundColor": "#FFFFFF",
-          "minHeight": "450px",
-          "boxShadow": "0 8px 32px rgba(0, 0, 0, 0.1)",
-          "borderRadius": "12px",
-          "padding": "20px"
+        "position": {
+          "row": 2,
+          "column": 7,
+          "span": 6
+        }
+      },
+      {
+        "id": "spend_vs_budget",
+        "type": "component",
+        "component": "Chart",
+        "props": {
+          "chartType": "bar-line",
+          "title": "Spend vs Budget",
+          "data": {
+            "labels": [
+              "Oct",
+              "Nov",
+              "Dec",
+              "Jan",
+              "Feb",
+              "Mar"
+            ],
+            "datasets": [
+              {
+                "type": "bar",
+                "label": "Budget",
+                "data": [
+                  2,
+                  2.2,
+                  2.5,
+                  2.4,
+                  2.6,
+                  2.8
+                ]
+              },
+              {
+                "type": "line",
+                "label": "Actual",
+                "data": [
+                  1.8,
+                  2.1,
+                  2.7,
+                  2.3,
+                  2.5,
+                  3.0
+                ]
+              }
+            ]
+          }
+        },
+        "position": {
+          "row": 3,
+          "column": 1,
+          "span": 6
+        }
+      },
+      {
+        "id": "supplier_radar",
+        "type": "component",
+        "component": "Chart",
+        "props": {
+          "chartType": "radar",
+          "title": "Supplier Performance",
+          "data": {
+            "labels": [
+              "Delivery",
+              "Quality",
+              "Cost",
+              "Compliance"
+            ],
+            "datasets": [
+              {
+                "label": "A",
+                "data": [
+                  90,
+                  85,
+                  88,
+                  92
+                ]
+              },
+              {
+                "label": "B",
+                "data": [
+                  85,
+                  80,
+                  82,
+                  88
+                ]
+              }
+            ]
+          }
         },
         "position": {
           "row": 3,
           "column": 7,
           "span": 6
-        },
-        "dataSource": {
-          "type": "api",
-          "endpoint": "/api/supplier/dashboard/activity",
-          "refreshInterval": 120000
         }
       },
       {
-        "id": "issues_deviations",
+        "id": "procurement_funnel",
         "type": "component",
-        "component": "IssuesSummary",
+        "component": "Chart",
         "props": {
-          "title": "⚠️ ISSUES & DEVIATIONS",
-          "subtitle": "11 total issues",
-          "issues": [
-            {
-              "category": "Invoice Validation Failures",
-              "icon": "🔴",
-              "count": 3,
-              "severity": "HIGH",
-              "details": [
-                { "type": "Tax calculation mismatch", "count": 2 },
-                { "type": "Quantity variance", "count": 1 }
-              ],
-              "action": { "label": "View Details", "link": "/issues/validation" }
-            },
-            {
-              "category": "IRN Check Failures",
-              "icon": "🔴",
-              "count": 1,
-              "severity": "HIGH",
-              "details": [
-                { "invoice": "INV-2026-085", "error": "Duplicate IRN" }
-              ],
-              "action": { "label": "Retry IRN", "link": "/issues/irn" }
-            },
-            {
-              "category": "Supporting Documents Missing",
-              "icon": "🟡",
-              "count": 5,
-              "severity": "MEDIUM",
-              "details": [
-                { "type": "E-Way Bill missing", "count": 2 },
-                { "type": "Delivery Challan missing", "count": 2 },
-                { "type": "Packing List missing", "count": 1 }
-              ],
-              "action": { "label": "Upload Now", "link": "/documents/upload" }
-            },
-            {
-              "category": "Quality Deviations",
-              "icon": "🟡",
-              "count": 2,
-              "severity": "MEDIUM",
-              "details": [
-                { "type": "Late ASN submission", "count": 1 },
-                { "type": "Incorrect item description", "count": 1 }
-              ],
-              "action": { "label": "View All", "link": "/issues/quality" }
-            }
-          ],
-          "trend": {
-            "current": 11,
-            "previous": 8,
-            "changePercent": 37.5,
-            "direction": "up"
+          "chartType": "funnel",
+          "title": "Procurement Funnel",
+          "data": {
+            "labels": [
+              "PR",
+              "RFQ",
+              "Quotes",
+              "PO",
+              "Delivered"
+            ],
+            "datasets": [
+              {
+                "data": [
+                  120,
+                  100,
+                  85,
+                  60,
+                  50
+                ]
+              }
+            ]
           }
-        },
-        "style": {
-          "backgroundColor": "#FFFFFF",
-          "minHeight": "350px",
-          "boxShadow": "0 8px 32px rgba(0, 0, 0, 0.1)",
-          "borderRadius": "12px",
-          "padding": "20px"
         },
         "position": {
           "row": 4,
           "column": 1,
           "span": 6
-        },
-        "dataSource": {
-          "type": "api",
-          "endpoint": "/api/supplier/dashboard/issues",
-          "refreshInterval": 300000
         }
       },
       {
-        "id": "financial_summary",
-        "type": "component",
-        "component": "FinancialSummary",
-        "props": {
-          "title": "💰 FINANCIAL SUMMARY",
-          "subtitle": "March 2026",
-          "metrics": [
-            {
-              "label": "Invoices Raised",
-              "value": "₹2,500,000",
-              "progress": 50,
-              "target": "₹5,000,000",
-              "color": "#2196F3"
-            },
-            {
-              "label": "Payment Received",
-              "value": "₹1,800,000",
-              "progress": 72,
-              "subtitle": "Of Invoiced Amount",
-              "color": "#4CAF50"
-            },
-            {
-              "label": "Outstanding Amount",
-              "value": "₹700,000",
-              "breakdown": [
-                { "label": "Current", "value": "₹400K" },
-                { "label": "1-30 days", "value": "₹200K" },
-                { "label": "30+ days", "value": "₹100K" }
-              ],
-              "color": "#FF9800"
-            },
-            {
-              "label": "Average Payment Cycle",
-              "value": "23 days",
-              "comparison": {
-                "label": "Industry Avg",
-                "value": "30 days",
-                "status": "better"
-              },
-              "icon": "✅",
-              "color": "#9C27B0"
-            }
-          ],
-          "downloadLink": "/reports/financial-statement"
-        },
-        "style": {
-          "backgroundColor": "#FFFFFF",
-          "minHeight": "350px",
-          "boxShadow": "0 8px 32px rgba(0, 0, 0, 0.1)",
-          "borderRadius": "12px",
-          "padding": "20px"
-        },
-        "position": {
-          "row": 4,
-          "column": 2,
-          "span": 6
-        },
-        "dataSource": {
-          "type": "api",
-          "endpoint": "/api/supplier/dashboard/financial",
-          "refreshInterval": 300000
-        }
-      },
-      {
-        "id": "invoice_status_chart",
+        "id": "invoice_aging",
         "type": "component",
         "component": "Chart",
         "props": {
           "chartType": "bar",
-          "title": "Invoice Status Breakdown",
-          "subtitle": "Last 3 Months",
+          "title": "Invoice Aging",
           "data": {
-            "labels": ["Approved", "Pending Approval", "Under Review", "Rejected", "Failed Validation"],
+            "labels": [
+              "0-30",
+              "31-60",
+              "61-90",
+              "90+"
+            ],
             "datasets": [
               {
-                "label": "Invoice Status",
-                "data": [68, 15, 8, 6, 3],
-                "backgroundColor": [
-                  "#4CAF50",
-                  "#FF9800",
-                  "#2196F3",
-                  "#F44336",
-                  "#9C27B0"
-                ],
-                "borderWidth": 2,
-                "borderColor": "#FFFFFF"
+                "data": [
+                  500,
+                  300,
+                  150,
+                  80
+                ]
               }
             ]
-          },
-          "options": {
-            "plugins": {
-              "legend": {
-                "position": "right",
-                "labels": {
-                  "padding": 15,
-                  "font": {
-                    "size": 12
-                  }
-                }
-              },
-              "tooltip": {
-                "callbacks": {
-                  "label": "function(context) { return context.label + ': ' + context.parsed + ' invoices'; }"
-                }
-              }
-            }
-          },
-          "stats": [
-            { "label": "Total Invoices", "value": "100" },
-            { "label": "Approval Rate", "value": "68%" },
-            { "label": "Rejection Rate", "value": "9%" }
-          ]
+          }
         },
-        "style": {
-          "backgroundColor": "#FFFFFF",
-          "minHeight": "380px",
-          "boxShadow": "0 8px 32px rgba(0, 0, 0, 0.1)",
-          "borderRadius": "12px",
-          "padding": "20px"
+        "position": {
+          "row": 4,
+          "column": 7,
+          "span": 6
+        }
+      },
+      {
+        "id": "spend_heatmap",
+        "type": "component",
+        "component": "Chart",
+        "props": {
+          "chartType": "heatmap",
+          "title": "Spend Heatmap",
+          "data": {
+            "days": [
+              "Mon",
+              "Tue",
+              "Wed"
+            ],
+            "hours": [
+              "9AM",
+              "12PM",
+              "3PM"
+            ],
+            "values": [
+              [
+                10,
+                20,
+                30
+              ],
+              [
+                20,
+                30,
+                40
+              ],
+              [
+                15,
+                25,
+                35
+              ]
+            ]
+          }
         },
         "position": {
           "row": 5,
           "column": 1,
-          "span": 6
-        },
-        "dataSource": {
-          "type": "api",
-          "endpoint": "/api/supplier/dashboard/charts/invoice-status",
-          "refreshInterval": 600000
+          "span": 12
         }
       },
       {
-        "id": "payment_trend_chart",
+        "id": "kpi_trends",
         "type": "component",
-        "component": "Chart",
+        "component": "MiniCharts",
         "props": {
-          "chartType": "halfDoughnut",
-          "title": "Payment Trend",
-          "subtitle": "Last 6 Months",
-          "data": {
-            "labels": ["Oct 2025", "Nov 2025", "Dec 2025", "Jan 2026", "Feb 2026", "Mar 2026"],
-            "datasets": [
-              {
-                "label": "Payment Received",
-                "data": [1200000, 1500000, 1800000, 1600000, 2000000, 1800000],
-                "borderColor": "#4CAF50",
-                "backgroundColor": "rgba(76, 175, 80, 0.1)",
-                "fill": true,
-                "tension": 0.4,
-                "borderWidth": 3,
-                "pointRadius": 5,
-                "pointBackgroundColor": "#4CAF50"
-              },
-              {
-                "label": "Invoices Raised",
-                "data": [1500000, 1800000, 2200000, 2000000, 2400000, 2500000],
-                "borderColor": "#2196F3",
-                "backgroundColor": "rgba(33, 150, 243, 0.1)",
-                "fill": true,
-                "tension": 0.4,
-                "borderWidth": 3,
-                "pointRadius": 5,
-                "pointBackgroundColor": "#2196F3"
-              }
-            ]
-          },
-          "options": {
-            "plugins": {
-              "legend": {
-                "position": "top",
-                "labels": {
-                  "padding": 15,
-                  "font": {
-                    "size": 12
-                  }
-                }
-              }
+          "metrics": [
+            {
+              "label": "PO Trend",
+              "data": [
+                10,
+                20,
+                30,
+                42
+              ]
             },
-            "scales": {
-              "y": {
-                "beginAtZero": true,
-                "ticks": {
-                  "callback": "function(value) { return '₹' + (value/100000) + 'L'; }"
-                }
-              }
+            {
+              "label": "Invoice Trend",
+              "data": [
+                8,
+                18,
+                28,
+                35
+              ]
             }
-          },
-          "stats": [
-            { "label": "Avg Monthly Payment", "value": "₹1.65M" },
-            { "label": "Avg Monthly Invoice", "value": "₹2.07M" },
-            { "label": "Collection Rate", "value": "80%" }
           ]
         },
-        "style": {
-          "backgroundColor": "#FFFFFF",
-          "minHeight": "380px",
-          "boxShadow": "0 8px 32px rgba(0, 0, 0, 0.1)",
-          "borderRadius": "12px",
-          "padding": "20px"
+        "position": {
+          "row": 6,
+          "column": 1,
+          "span": 12
+        }
+      },
+      {
+        "id": "ai_insights",
+        "type": "component",
+        "component": "InsightsPanel",
+        "props": {
+          "title": "🤖 AI Insights",
+          "insights": [
+            {
+              "type": "warning",
+              "message": "Spend exceeded by 7%"
+            },
+            {
+              "type": "opportunity",
+              "message": "Save ₹120K via supplier switch"
+            }
+          ]
         },
         "position": {
-          "row": 5,
-          "column": 7,
-          "span": 6
-        },
-        "dataSource": {
-          "type": "api",
-          "endpoint": "/api/supplier/dashboard/charts/payment-trend",
-          "refreshInterval": 600000
+          "row": 7,
+          "column": 1,
+          "span": 12
         }
       },
       {
@@ -633,55 +447,28 @@
         "props": {
           "actions": [
             {
-              "label": "Create Invoice",
+              "label": "Create PO",
               "icon": "➕",
-              "action": "/invoices/create",
-              "style": "primary",
-              "description": "Submit new invoice"
+              "action": "/po/create"
             },
             {
-              "label": "Create ASN",
-              "icon": "📦",
-              "action": "/asn/create",
-              "style": "primary",
-              "description": "Create advance ship notice"
-            },
-            {
-              "label": "View All POs",
-              "icon": "📋",
-              "action": "/pos",
-              "style": "secondary",
-              "description": "Browse purchase orders"
-            },
-            {
-              "label": "Download Reports",
-              "icon": "📊",
-              "action": "/reports",
-              "style": "secondary",
-              "description": "Generate statements"
+              "label": "Approve Invoice",
+              "icon": "✔️",
+              "action": "/invoice/approve"
             }
           ]
         },
-        "style": {
-          "backgroundColor": "#F7FAFC",
-          "minHeight": "80px",
-          "padding": "15px",
-          "borderRadius": "8px"
-        },
         "position": {
-          "row": 6,
+          "row": 8,
           "column": 1,
           "span": 12
         }
       }
     ],
     "settings": {
-      "refreshInterval": 300000,
       "theme": "light",
       "timezone": "Asia/Kolkata",
-      "currency": "INR",
-      "dateFormat": "DD MMM, YYYY",
-      "timeFormat": "12h"
+      "currency": "INR"
     }
   }
 }
