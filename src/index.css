@@ -1,3 +1,16 @@
 body{
   overflow: auto;
 }
+
+.value-zoom {
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); /* slower than before */
+  transition-delay: 0.2s; /* optional: start after 0.2s */
+}
+
+.value-zoom.active {
+  opacity: 1;
+  transform: scale(1);
+}

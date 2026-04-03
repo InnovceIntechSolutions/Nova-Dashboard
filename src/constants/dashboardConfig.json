@@ -307,7 +307,7 @@
         "position": {
           "row": 4,
           "column": 1,
-          "span": 6
+          "span": 8
         }
       },
       {
@@ -339,7 +339,7 @@
         "position": {
           "row": 4,
           "column": 7,
-          "span": 6
+          "span": 4
         }
       },
       {
@@ -462,6 +462,184 @@
           "row": 8,
           "column": 1,
           "span": 12
+        }
+      },
+      {
+        "id": "kpi_supplier_risk",
+        "type": "component",
+        "component": "StatsCard",
+        "props": {
+          "title": "Supplier Risk",
+          "value": "3 High Risk",
+          "subtitle": "Out of 50 Suppliers",
+          "trend": "↓ 1 since last month",
+          "icon": "⚠️",
+          "details": [
+            {
+              "label": "High Risk",
+              "value": "3"
+            },
+            {
+              "label": "Medium Risk",
+              "value": "7"
+            },
+            {
+              "label": "Low Risk",
+              "value": "40"
+            }
+          ]
+        },
+        "position": {
+          "row": 6,
+          "column": 13,
+          "span": 3
+        }
+      },
+      {
+        "id": "po_cycle_time",
+        "type": "component",
+        "component": "Chart",
+        "props": {
+          "chartType": "line",
+          "title": "PO Cycle Time (Days)",
+          "data": {
+            "labels": [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun"
+            ],
+            "datasets": [
+              {
+                "label": "Average Cycle Time",
+                "data": [
+                  5,
+                  6,
+                  4,
+                  7,
+                  5,
+                  6
+                ]
+              }
+            ]
+          }
+        },
+        "position": {
+          "row": 5,
+          "column": 4,
+          "span": 4
+        }
+      },
+      {
+        "id": "invoice_approval_time",
+        "type": "component",
+        "component": "Chart",
+        "props": {
+          "chartType": "bar",
+          "title": "Invoice Approval Time",
+          "data": {
+            "labels": [
+              "0-1 Days",
+              "2-3 Days",
+              "4-5 Days",
+              "6+ Days"
+            ],
+            "datasets": [
+              {
+                "data": [
+                  150,
+                  90,
+                  30,
+                  10
+                ]
+              }
+            ]
+          }
+        },
+        "position": {
+          "row": 5,
+          "column": 4,
+          "span": 4
+        }
+      },
+      {
+        "id": "pending_po_list",
+        "type": "component",
+        "component": "TaskList",
+        "props": {
+          "title": "Pending POs",
+          "subtitle": "10 POs require attention",
+          "tasks": [
+            {
+              "id": "task_3",
+              "priority": "HIGH",
+              "title": "PO #2026-105 Approval",
+              "description": "Awaiting finance approval",
+              "dueDate": "Today 5:00 PM",
+              "badge": "🟡 HIGH",
+              "actions": [
+                {
+                  "label": "Approve",
+                  "action": "approve_po",
+                  "style": "primary"
+                }
+              ]
+            },
+            {
+              "id": "task_4",
+              "priority": "MEDIUM",
+              "title": "PO #2026-110 Review",
+              "description": "Check supplier details",
+              "dueDate": "Tomorrow",
+              "badge": "🔵 MEDIUM",
+              "actions": [
+                {
+                  "label": "Review",
+                  "action": "review_po",
+                  "style": "primary"
+                }
+              ]
+            }
+          ]
+        },
+        "position": {
+          "row": 5,
+          "column": 13,
+          "span": 4
+        }
+      },
+      {
+        "id": "category_spend_pie",
+        "type": "component",
+        "component": "Chart",
+        "props": {
+          "chartType": "pie",
+          "title": "Spend by Category",
+          "data": {
+            "labels": [
+              "CapEx",
+              "OpEx",
+              "Services",
+              "Maintenance"
+            ],
+            "datasets": [
+              {
+                "data": [
+                  45,
+                  35,
+                  15,
+                  5
+                ]
+              }
+            ]
+          }
+        },
+        "position": {
+          "row": 5,
+          "column": 4,
+          "span": 4
         }
       }
     ],
