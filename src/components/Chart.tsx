@@ -5,6 +5,8 @@ import LineChart     from '../components/charts/Linechart/LineChart';
 import BarChart      from '../components/charts/Barchart/BarChart';
 import PieChart      from '../components/charts/Piechart/PieChart';
 import DoughnutChart from '../components/charts/DoughnutChart/DoughnutChart';
+import HalfDoughnutChart from '../components/charts/Halfdoughnutchart/HalfDoughnutChart';
+import GaugeChart       from '../components/charts/Gaugechart/GaugeChart';
 import RadarChart   from '../components/charts/Radarchart/RadarChart';
 import HeatmapChart from '../components/Heatmap/HeatmapOnCartesian';
 import type { ChartProps } from '../Types/types';
@@ -89,6 +91,8 @@ const Chart: React.FC<ChartProps> = ({
       case 'pie':      return <PieChart      {...sharedProps} />;
       case 'doughnut': return <DoughnutChart {...sharedProps} />;
       case 'radar':    return <RadarChart    {...sharedProps} />;
+      case 'halfDoughnut':  return <HalfDoughnutChart {...sharedProps} />;
+      case 'gauge':         return <GaugeChart        {...sharedProps} />;
       case 'heatmap':  return <HeatmapChart  {...sharedProps} />;
       case 'line':
       default:         return <LineChart     {...sharedProps} />;

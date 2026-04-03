@@ -3,7 +3,7 @@
 import React, { useMemo } from 'react';
 import ReactECharts from 'echarts-for-react';
 import { COLORS, BASE_TEXT_STYLE, TOOLTIP_STYLE, LEGEND_STYLE } from '../../../Types/types';
-import { type BaseChartProps } from '../../../Types/types';
+import type { BaseChartProps } from '../../../Types/types';
 
 
 const LineChart: React.FC<BaseChartProps> = ({ data, options = {} }) => {
