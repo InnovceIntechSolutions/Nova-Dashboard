@@ -6,7 +6,7 @@ export interface ProgressBarProps {
   style?: React.CSSProperties;
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ percentage, title, style }) => {
+const ProgressBar: React.FC<ProgressBarProps> = ({ percentage, title, style:_style }) => {
   const [progress, setProgress] = useState<number>(0);
   const progressValue = percentage || 0;
 

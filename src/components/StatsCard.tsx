@@ -27,21 +27,21 @@ const StatsCard: React.FC<StatsCardProps> = ({
   }, []);
 
   return (
-    <div className="card shadow-sm border-0 rounded-3 stats-card" style={style}>
+    <div className="card shadow-sm border-0 rounded-3 stats-card">
       <div className="card-body">
-        <div className="d-flex align-items-center mb-3">
-          {icon && <span className="fs-2 me-3 text-primary">{icon}</span>}
+        <div className="d-flex align-items-center">
+          {/* {icon && <span className="fs-2 me-3 text-primary">{icon}</span>} */}
           <div>
-            <h6 className="card-title mb-1 text-muted">{title || 'Statistic'}</h6>
-            {subtitle && <p className="card-subtitle mb-2 text-muted">{subtitle}</p>}
+            <h6 className="card-title text-muted  mb-1">{title || 'Statistic'}</h6>
+            
           </div>
         </div>
 
         {/* Value with zoom/fade animation */}
-        <div className={`display-6 mb-2 text-dark value-zoom ${animateValue ? 'active' : ''}`}>
+        <div className={`fs-1 text-dark value-zoom fw-bold ${animateValue ? 'active' : ''}`}>
           {value ?? '—'}
         </div>
-
+        {subtitle && <p className="card-subtitle text-muted ">{subtitle}</p>}
         {trend && (
           <p
             className={`mb-0 text-${
@@ -53,10 +53,10 @@ const StatsCard: React.FC<StatsCardProps> = ({
         )}
 
         {details && details.length > 0 && (
-          <div className="mt-3">
+          <div className="mt-1 d-flex gap-2">
             {details.map((detail: { label: string; value: string }, idx: number) => (
-              <div key={idx} className="d-flex justify-content-between mb-2">
-                <span className="text-muted">{detail.label}</span>
+              <div key={idx} className="d-flex flex-column">
+                <span className="text-muted ">{detail.label}</span>
                 <span className="text-dark">{detail.value}</span>
               </div>
             ))}

@@ -31,6 +31,7 @@ export interface WidgetLayout {
   props: WidgetProps;
   style: React.CSSProperties & { textAlign?: string };
   position: LayoutPosition;
+   index?: number; 
 }
 
 export interface DashboardConfig {

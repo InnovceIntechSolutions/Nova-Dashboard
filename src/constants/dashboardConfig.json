@@ -184,56 +184,107 @@
           "span": 6
         }
       },
-      {
-        "id": "spend_vs_budget",
-        "type": "component",
-        "component": "Chart",
-        "props": {
-          "chartType": "bar-line",
-          "title": "Spend vs Budget",
-          "data": {
-            "labels": [
-              "Oct",
-              "Nov",
-              "Dec",
-              "Jan",
-              "Feb",
-              "Mar"
-            ],
-            "datasets": [
-              {
-                "type": "bar",
-                "label": "Budget",
-                "data": [
-                  2,
-                  2.2,
-                  2.5,
-                  2.4,
-                  2.6,
-                  2.8
-                ]
-              },
-              {
-                "type": "line",
-                "label": "Actual",
-                "data": [
-                  1.8,
-                  2.1,
-                  2.7,
-                  2.3,
-                  2.5,
-                  3.0
-                ]
-              }
-            ]
-          }
+     {
+  "id": "spend_vs_budget",
+  "type": "component",
+  "component": "Chart",
+  "props": {
+    "chartType": "bar-line",
+    "title": "Spend vs Budget",
+    "data": {
+      "labels": [
+        "Apr", "May", "Jun", "Jul", "Aug", "Sep",
+        "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"
+      ],
+      "datasets": [
+        {
+          "type": "bar",
+          "label": "Budget",
+          "data": [1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.8, 2.7, 2.9, 3.0],
+          "backgroundColor": "#4e73df"
         },
-        "position": {
-          "row": 3,
-          "column": 1,
-          "span": 6
+        {
+          "type": "line",
+          "label": "Actual",
+          "data": [1.8, 2.1, 2.0, 2.3, 2.4, 2.2, 2.7, 2.5, 3.0, 2.6, 2.8, 3.2],
+          "borderColor": "#e74a3b",
+          "tension": 0.4
         }
-      },
+      ]
+    },
+
+    "drillthrough": {
+      "type": "modal", 
+      "targetComponent": "Chart",
+
+      "mapping": {
+        "Apr": "apr_detail",
+        "May": "may_detail",
+        "Jun": "jun_detail",
+        "Jul": "jul_detail",
+        "Aug": "aug_detail",
+        "Sep": "sep_detail",
+        "Oct": "oct_detail",
+        "Nov": "nov_detail",
+        "Dec": "dec_detail",
+        "Jan": "jan_detail",
+        "Feb": "feb_detail",
+        "Mar": "mar_detail"
+      }
+    }
+  },
+
+  "children": [
+    {
+      "id": "dec_detail",
+      "component": "Chart",
+      "props": {
+        "chartType": "bar",
+        "title": "December - Weekly Spend",
+        "data": {
+          "labels": ["W1", "W2", "W3", "W4"],
+          "datasets": [
+            {
+              "label": "Budget",
+              "data": [0.6, 0.7, 0.75, 0.75]
+            },
+            {
+              "label": "Actual",
+              "data": [0.7, 0.8, 0.75, 0.75]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "mar_detail",
+      "component": "Chart",
+      "props": {
+        "chartType": "bar",
+        "title": "March - Weekly Spend",
+        "data": {
+          "labels": ["W1", "W2", "W3", "W4"],
+          "datasets": [
+            {
+              "label": "Budget",
+              "data": [0.7, 0.75, 0.75, 0.8]
+            },
+            {
+              "label": "Actual",
+              "data": [0.8, 0.85, 0.75, 0.8]
+            }
+          ]
+        }
+      }
+    }
+  ],
+
+  "position": {
+    "row": 3,
+    "column": 1,
+    "span": 6
+  }
+},
       {
         "id": "supplier_radar",
         "type": "component",

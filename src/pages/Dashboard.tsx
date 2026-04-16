@@ -41,7 +41,7 @@ const Dashboard: React.FC<DashboardProps> = ({ layoutData }) => {
     const Component = componentMap[item.component];
     if (!Component) return <Shimmer />;
 
-    return <Component {...item.props} />;
+    return <Component {...item.props} style={item.style || {}}/>;
   };
 
   // ✅ Bootstrap column mapping
@@ -69,7 +69,9 @@ const Dashboard: React.FC<DashboardProps> = ({ layoutData }) => {
     .sort((a, b) => a - b);
 
   return (
-    <div className="container-fluid py-3">
+    <>
+    <Header />
+    <div className="container">
       
       {sortedRows.map((row) => {
         const widgets = groupedByRow[row];
@@ -98,6 +100,8 @@ const Dashboard: React.FC<DashboardProps> = ({ layoutData }) => {
         );
       })}
     </div>
+
+    </>
   );
 };
 

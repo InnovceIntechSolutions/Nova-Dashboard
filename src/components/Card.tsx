@@ -7,7 +7,7 @@ export interface CardProps {
   style?: React.CSSProperties;
 }
 
-const Card: React.FC<CardProps> = ({ title = 'Card', value = '0', unit = '', style }) => {
+const Card: React.FC<CardProps> = ({ title = 'Card', value = '0', unit = '', style:_style }) => {
   return (
     <div className="card card-body" >
       <h4 className="card-title">{title}</h4>

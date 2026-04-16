@@ -38,7 +38,7 @@ const Timeline: React.FC<TimelineProps> = ({ title, subtitle, events = [], showC
           <div className="timeline-wrapper">
             {displayEvents.map((event, index) => (
               <div key={event.id} className="timeline-event d-flex align-items-start mb-4">
-                <div className="timeline-dot bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-3">
+                <div className="timeline-dot bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-3 p-1" style={{width:"30px", height:"30px"}}>
                   {event.icon}
                 </div>
                 <div className="timeline-content flex-grow-1">
