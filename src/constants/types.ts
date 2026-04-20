@@ -11,6 +11,7 @@ export interface WidgetProps {
   title?: string;
   subtitle?: string;
   userName?: string;
+  slotId?: string;
   selectedDate?: string;
   data?: any;
   chartType?: string;
@@ -18,7 +19,7 @@ export interface WidgetProps {
   value?: string | number;
   trend?: any;
   icon?: string;
-  details?: Array<{ label: string; value: string }>;
+ details?: Array<{ label: string; value: string | number }>;
   options?: any;
   stats?: Array<{ label: string; value: string }>;
   [key: string]: any; // Allow any additional props
@@ -28,18 +29,24 @@ export interface WidgetLayout {
   id: string;
   type: string;
   component: string;
-  props: WidgetProps;
-  style: React.CSSProperties & { textAlign?: string };
+  endpoint?: string; // ADD THIS
+  props?: WidgetProps; // make optional
+  style?: React.CSSProperties; // optional
   position: LayoutPosition;
-   index?: number; 
+  slotId?: string; // optional
+  chartType?: string;
 }
-
 export interface DashboardConfig {
   dashboard: {
     layout: WidgetLayout[];
   };
 }
 
+export interface SupplierDashboardConfig  {
+  dashboard: {
+    layout: WidgetLayout[];
+  };
+}
 
 // src/constants/types.ts
 export interface CalendarProps {
