@@ -22,13 +22,13 @@ const Timeline: React.FC<Props> = ({
   events = []
 }) => {
   return (
-    <div className="timeline-card h-100">
-
-      {/* Header */}
-      <div className="timeline-header">
-        <div>
-          <h5>{title}</h5>
-          {subtitle && <span>{subtitle}</span>}
+    <div className="timeline card border-0 shadow-sm h-100">
+      <div className="card-header bg-transparent border-bottom">
+        <div className="d-flex justify-content-between align-items-center">
+          <div>
+            <h5 className="mb-0">{title || '📅 Recent Activity'}</h5>
+            {subtitle && <p className="text-muted mb-0">{subtitle}</p>}
+          </div>
         </div>
       </div>
 

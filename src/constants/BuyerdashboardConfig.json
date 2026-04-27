@@ -1,0 +1,215 @@
+{
+  "dashboard": {
+    "layout": [
+      
+      {
+        "id": "Pending Invoices",
+        "type": "component",
+        "component": "StatsCard",
+        "endpoint": "Pending Invoices",
+         "param": "Vertiv India - Pune Plant",
+        "position": {
+          "row": 1,
+          "column": 1,
+          "span": 3
+        }
+      },
+      
+      {
+        "id": "Active Suppliers",
+        "type": "component",
+        "component": "StatsCard",
+        "endpoint": "Active Suppliers",
+          "param": "Vertiv India - Pune Plant",
+        "position": {
+          "row": 1,
+          "column": 2,
+          "span": 3
+        }
+      },
+    
+      {
+        "id": "Supplier Performance",
+        "type": "component",
+        "component": "StatsCard",
+        "endpoint": "Supplier Performance",
+         "param": "Vertiv India - Pune Plant",
+        "position": {
+          "row": 1,
+          "column": 3,
+          "span": 3
+        }
+      },
+      
+      {
+        "id": "Open POS",
+        "type": "component",
+        "component": "StatsCard",
+        "endpoint": "Open POS",
+         "param": "Vertiv India - Pune Plant",
+        "position": {
+          "row": 1,
+          "column": 4,
+          "span": 3
+        }
+      },
+      
+       {
+        "id": "Action Required",
+        "type": "component",
+        "component": "TaskList",
+        "endpoint": "Action Required",
+         "param": "Vertiv India - Pune Plant",
+        "position": {
+          "row": 3,
+          "column": 1,
+          "span": 6
+        }
+      },
+  
+{
+  "id": "spend_vs_budget",
+  "type": "component",
+  "component": "Chart",
+  "endpoint": "Monthly Spend Trend",
+  
+    "chartType": "Bar-line",
+     "param": "Vertiv India - Pune Plant",
+    "slotId": "074CD6F44-1FAD-4499-911C-9092395EDE61C3BEA3AF-C9B7-4DEA-AE35-EA1C626191C00314393C-29B4-4E60-8D11-595EDAAAC42F00",
+  "position": {
+    "row": 4,
+    "column": 1,
+    "span": 6
+  }
+},
+
+{
+  "id": "Supplier ScoreCard",
+  "type": "component",
+  "component": "Table",  
+  "endpoint": "Supplier ScoreCard",        
+  "param": "Vertiv India - Pune Plant",
+  "slotId": "074CD6F44-1FAD-4499-911C-9092395EDE61C3BEA3AF-C9B7-4DEA-AE35-EA1C626191C00314393C-29B4-4E60-8D11-595EDAAAC42F00",
+  "position": {
+    "row": 3,
+    "column": 2,
+    "span": 6
+  }
+},
+
+    
+    {
+  "id": "Category Wise Spend",
+  "type": "component",
+  "component": "Chart",
+  "endpoint": "Category Wise Spend",
+   "param": "VERTIV ENERGY PRIVATE LIMITED",
+  "chartType": "Bar",
+  "position": {
+    "row": 4,
+    "column": 2,
+    "span": 6
+  }
+},
+ {
+        "id": "recent_activity",
+        "type": "component",
+        "component": "Timeline",
+        "props": {
+          "title": "📅 RECENT ACTIVITY",
+          "events": [
+            {
+              "id": "e1",
+              "icon": "🟢",
+              "title": "Invoice Approved",
+              "timestamp": "Today"
+            },
+            {
+              "id": "e2",
+              "icon": "🔵",
+              "title": "PO Created",
+              "timestamp": "Yesterday"
+            }
+          ]
+        },
+        "position": {
+          "row": 5,
+          "column": 1,
+          "span": 6
+        }
+      },
+      {
+  "id": "procurement_summary",
+  "type": "component",
+  "component": "ProcurementSummary",
+  "position": {
+    "row": 5,
+    "column": 2,
+    "span": 6
+  },
+  "props": {
+    "title": "PROCUREMENT SUMMARY",
+    "subtitle": "March 2026",
+    "progressMetrics": [
+      {
+        "label": "POs Released This Month",
+        "current": 45,
+        "total": 100,
+        "displayCurrent": "45",
+        "displayTotal": "100",
+        "color": "#3b82f6"
+      },
+      {
+        "label": "Total PO Value",
+        "current": 25,
+        "total": 35,
+        "displayCurrent": "₹25M",
+        "displayTotal": "₹35M",
+        "color": "#10b981"
+      }
+    ],
+    "infoCard": {
+      "title": "Open PO Value: ₹15.2M",
+      "subtitle": "(61% of total)",
+      "items": [
+        { "label": "Goods in Transit",   "value": "₹8.5M", "color": "#3b82f6" },
+        { "label": "Awaiting Shipment",  "value": "₹6.7M", "color": "#f59e0b" }
+      ]
+    },
+    "highlightCard": {
+      "label": "Average PO Size",
+      "value": "₹555,556",
+      "valueColor": "#6366f1",
+      "footer": "Last Month: ₹520,000",
+      "footerHighlight": "↑ +6.8%",
+      "footerHighlightColor": "#10b981"
+    }
+  }
+},
+      {
+        "id": "quick_actions",
+        "type": "component",
+        "component": "QuickActions",
+        "props": {
+          "actions": [
+            {
+              "label": "Create PO",
+              "icon": "➕",
+              "action": "/po/create"
+            },
+            {
+              "label": "Approve Invoice",
+              "icon": "✔️",
+              "action": "/invoice/approve"
+            }
+          ]
+        },
+        "position": {
+          "row": 6,
+          "column": 1,
+          "span": 12
+        }
+      }
+  ]
+  }
+}
