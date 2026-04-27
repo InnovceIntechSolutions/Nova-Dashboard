@@ -10,7 +10,7 @@
          "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 1,
-          "column": 3,
+          "column": 1,
           "span": 3
         }
       },
@@ -22,7 +22,7 @@
          "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 1,
-          "column": 4,
+          "column": 2,
           "span": 3
         }
       },
@@ -33,8 +33,8 @@
         "endpoint": "Active POs",
          "param": "Vertiv India - Pune Plant",
         "position": {
-          "row": 2,
-          "column": 1,
+          "row": 1,
+          "column": 3,
           "span": 3
         }
       },
@@ -45,11 +45,185 @@
         "endpoint": "Invoices This Month",
          "param": "Vertiv India - Pune Plant",
         "position": {
-          "row": 2,
-          "column": 2,
+          "row": 1,
+          "column": 4,
           "span": 3
         }
+      },
+      {
+        "id": "buyer_tasks",
+        "type": "component",
+        "component": "TaskList",
+        "props": {
+          "title": "🔔 WORK QUEUE",
+          "subtitle": "6 tasks pending",
+          "tasks": [
+            {
+              "id": "task_1",
+              "priority": "URGENT",
+              "title": "Approve Invoice INV-2026-101",
+              "description": "Pending approval from finance",
+              "dueDate": "Today 4:00 PM",
+              "badge": "🔴 URGENT",
+              "actions": [
+                {
+                  "label": "Approve",
+                  "action": "approve_invoice",
+                  "style": "primary"
+                }
+              ]
+            },
+            {
+              "id": "task_2",
+              "priority": "HIGH",
+              "title": "Review PO Change Request",
+              "description": "Supplier requested qty update",
+              "dueDate": "Tomorrow",
+              "badge": "🟡 HIGH",
+              "actions": [
+                {
+                  "label": "Review",
+                  "action": "review_po",
+                  "style": "primary"
+                }
+              ]
+            }
+          ]
+        },
+        "position": {
+          "row": 2,
+          "column": 1,
+          "span": 6
+        }
+      },
+ {
+        "id": "recent_activity",
+        "type": "component",
+        "component": "Timeline",
+        "props": {
+          "title": "📅 RECENT ACTIVITY",
+          "events": [
+            {
+              "id": "e1",
+              "icon": "🟢",
+              "title": "Invoice Approved",
+              "timestamp": "Today"
+            },
+            {
+              "id": "e2",
+              "icon": "🔵",
+              "title": "PO Created",
+              "timestamp": "Yesterday"
+            }
+          ]
+        },
+        "position": {
+          "row": 2,
+          "column": 7,
+          "span": 6
+        }
+      },
+      {
+  "id": "issues_deviations",
+  "type": "component",
+  "component": "IssuesDeviations",
+  "position": {
+    "row": 3,
+    "column": 1,
+    "span": 6
+  },
+  "props": {
+    "title": "ISSUES & DEVIATIONS",
+    "items": [
+      { "label": "Invoice Validation Failures", "count": 3 },
+      { "label": "IRN Generation Failed",       "count": 1 },
+      { "label": "Missing Documents",           "count": 5 },
+      { "label": "Late ASN Submissions",        "count": 2 }
+    ]
+  }
+},
+{
+  "id": "financial_summary",
+  "type": "component",
+  "component": "FinancialSummary",
+  "position": {
+    "row": 3,
+    "column": 2,
+    "span": 6
+  },
+  "props": {
+    "title": "FINANCIAL SUMMARY",
+    "items": [
+      { "label": "Invoices Raised (This Month)", "value": "₹2,500,000", "color": "default" },
+      { "label": "Payment Received",             "value": "₹1,800,000", "color": "green"   },
+      { "label": "Outstanding Amount",           "value": "₹700,000",   "color": "amber"   },
+      { "label": "Avg Payment Cycle",            "value": "28 days",    "color": "default" }
+    ]
+  }
+},
+{
+  "id": "payment_trend",
+  "type": "component",
+  "component": "PaymentTrend",
+  "position": {
+    "row": 3,
+    "column": 2,
+    "span": 6
+  },
+  "props": {
+    "title": "PAYMENT TREND",
+    "items": [
+      { "label": "Invoices Raised (This Month)", "value": "₹2,500,000", "color": "default" },
+      { "label": "Payment Received",             "value": "₹1,800,000", "color": "green"   },
+      { "label": "Outstanding Amount",           "value": "₹700,000",   "color": "amber"   },
+      { "label": "Avg Payment Cycle",            "value": "28 days",    "color": "default" }
+    ]
+  }
+},
+{
+  "id": "invoice_breakdown",
+  "type": "component",
+  "component": "InvoiceBreakdown",
+  "position": {
+    "row": 3,
+    "column": 2,
+    "span": 6
+  },
+  "props": {
+    "title": "INVOICE BREAKDOWN",
+    "items": [
+      { "label": "Invoices Raised (This Month)", "value": "₹2,500,000", "color": "default" },
+      { "label": "Payment Received",             "value": "₹1,800,000", "color": "green"   },
+      { "label": "Outstanding Amount",           "value": "₹700,000",   "color": "amber"   },
+      { "label": "Avg Payment Cycle",            "value": "28 days",    "color": "default" }
+    ]
+  }
+},
+ {
+        "id": "quick_actions",
+        "type": "component",
+        "component": "QuickActions",
+        "props": {
+          "actions": [
+            {
+              "label": "Create PO",
+              "icon": "➕",
+              "action": "/po/create"
+            },
+            {
+              "label": "Approve Invoice",
+              "icon": "✔️",
+              "action": "/invoice/approve"
+            }
+          ]
+        },
+        "position": {
+          "row": 4,
+          "column": 1,
+          "span": 12
+        }
       }
+
      
   ]
   }

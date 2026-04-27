@@ -16,7 +16,9 @@ import FinancialSummary from '../components/FinancialSummary';
 import QuickActions from '../components/QuickActions';
 import HeatmapChart from '../components/Heatmap/HeatmapOnCartesian';
 import SupplierScorecardGrid from '../components/Grid';
-
+import IssuesDeviations from '../components/IssueDeviations';
+import PaymentTrend from '../components/PaymentTrend';
+import InvoiceBreakdown from '../components/Invoicebreakdown';  
 interface DashboardProps {
   layoutData: WidgetLayout[];
 }
@@ -35,6 +37,10 @@ const componentMap: Record<string, React.ComponentType<any>> = {
   QuickActions,
   HeatmapChart,
   Table: SupplierScorecardGrid, 
+
+  IssuesDeviations,
+  PaymentTrend,
+  InvoiceBreakdown
 };
 
 const SupplierDashboard: React.FC<DashboardProps> = ({ layoutData }) => {

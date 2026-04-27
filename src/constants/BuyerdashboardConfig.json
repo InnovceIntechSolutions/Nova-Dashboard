@@ -110,7 +110,106 @@
     "column": 2,
     "span": 6
   }
-}
+},
+ {
+        "id": "recent_activity",
+        "type": "component",
+        "component": "Timeline",
+        "props": {
+          "title": "📅 RECENT ACTIVITY",
+          "events": [
+            {
+              "id": "e1",
+              "icon": "🟢",
+              "title": "Invoice Approved",
+              "timestamp": "Today"
+            },
+            {
+              "id": "e2",
+              "icon": "🔵",
+              "title": "PO Created",
+              "timestamp": "Yesterday"
+            }
+          ]
+        },
+        "position": {
+          "row": 5,
+          "column": 1,
+          "span": 6
+        }
+      },
+      {
+  "id": "procurement_summary",
+  "type": "component",
+  "component": "ProcurementSummary",
+  "position": {
+    "row": 5,
+    "column": 2,
+    "span": 6
+  },
+  "props": {
+    "title": "PROCUREMENT SUMMARY",
+    "subtitle": "March 2026",
+    "progressMetrics": [
+      {
+        "label": "POs Released This Month",
+        "current": 45,
+        "total": 100,
+        "displayCurrent": "45",
+        "displayTotal": "100",
+        "color": "#3b82f6"
+      },
+      {
+        "label": "Total PO Value",
+        "current": 25,
+        "total": 35,
+        "displayCurrent": "₹25M",
+        "displayTotal": "₹35M",
+        "color": "#10b981"
+      }
+    ],
+    "infoCard": {
+      "title": "Open PO Value: ₹15.2M",
+      "subtitle": "(61% of total)",
+      "items": [
+        { "label": "Goods in Transit",   "value": "₹8.5M", "color": "#3b82f6" },
+        { "label": "Awaiting Shipment",  "value": "₹6.7M", "color": "#f59e0b" }
+      ]
+    },
+    "highlightCard": {
+      "label": "Average PO Size",
+      "value": "₹555,556",
+      "valueColor": "#6366f1",
+      "footer": "Last Month: ₹520,000",
+      "footerHighlight": "↑ +6.8%",
+      "footerHighlightColor": "#10b981"
+    }
+  }
+},
+      {
+        "id": "quick_actions",
+        "type": "component",
+        "component": "QuickActions",
+        "props": {
+          "actions": [
+            {
+              "label": "Create PO",
+              "icon": "➕",
+              "action": "/po/create"
+            },
+            {
+              "label": "Approve Invoice",
+              "icon": "✔️",
+              "action": "/invoice/approve"
+            }
+          ]
+        },
+        "position": {
+          "row": 6,
+          "column": 1,
+          "span": 12
+        }
+      }
   ]
   }
 }

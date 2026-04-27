@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { WidgetLayout } from '../constants/types';
 import { fetchDashboardData } from '../services/dashboardapi'; // adjust path 
-
+import ProcurementSummary from '../components/ProcurementSummary';
 import Calendar from '../components/Calendar';
 import Chart from '../components/Chart';
 import Header from '../components/Header';
@@ -27,6 +27,7 @@ const componentMap: Record<string, React.ComponentType<any>> = {
   StatsCard,
   Calendar,
   Header,
+  ProcurementSummary,
   Card,
   TaskList,
   Timeline,

@@ -15,6 +15,7 @@ import FinancialSummary from '../components/FinancialSummary';
 import QuickActions from '../components/QuickActions';
 import HeatmapChart from '../components/Heatmap/HeatmapOnCartesian';
 
+
 interface DashboardProps {
   layoutData: WidgetLayout[];
 }
@@ -32,6 +33,7 @@ const componentMap: Record<string, React.ComponentType<any>> = {
   FinancialSummary,
   QuickActions,
   HeatmapChart
+ 
 };
 
 const Dashboard: React.FC<DashboardProps> = ({ layoutData }) => {

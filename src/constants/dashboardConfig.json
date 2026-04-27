@@ -693,6 +693,7 @@
           "span": 4
         }
       }
+      
     ],
     "settings": {
       "theme": "light",
@@ -700,4 +701,5 @@
       "currency": "INR"
     }
   }
+  
 }

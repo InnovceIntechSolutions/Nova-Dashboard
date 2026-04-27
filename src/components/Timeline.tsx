@@ -27,7 +27,7 @@ const Timeline: React.FC<TimelineProps> = ({ title, subtitle, events = [], showC
       <div className="card-header bg-transparent border-bottom">
         <div className="d-flex justify-content-between align-items-center">
           <div>
-            <h5 className="mb-0">{title || 'Activity'}</h5>
+            <h5 className="mb-0">{title || '📅 Recent Activity'}</h5>
             {subtitle && <p className="text-muted mb-0">{subtitle}</p>}
           </div>
         </div>
