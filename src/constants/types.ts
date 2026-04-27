@@ -35,6 +35,7 @@ export interface WidgetLayout {
   position: LayoutPosition;
   slotId?: string; // optional
   chartType?: string;
+  param?: string;  
 }
 export interface DashboardConfig {
   dashboard: {
@@ -52,4 +53,22 @@ export interface SupplierDashboardConfig  {
 export interface CalendarProps {
   selectedDate?: string;
   style?: React.CSSProperties;
+}
+
+
+ 
+export interface SupplierScorecardProps extends WidgetProps {
+  Title?: string;       // Card heading e.g. "Supplier ScoreCard"
+  Subtitle?: string;    // e.g. "Top 10 Suppliers - Last 6 Months"
+  Icon?: string;        // e.g. "⭐"
+  label1?: string;      // Column header: Supplier
+  label2?: string;      // Column header: Quality
+  label3?: string;      // Column header: On-Time
+  label4?: string;      // Column header: Pricing
+  label5?: string;      // Column header: Overall
+  value1?: string[];    // Supplier names
+  value2?: string[];    // Quality scores  (numeric strings e.g. "95.00")
+  value3?: string[];    // On-Time scores  (numeric strings)
+  value4?: string[];    // Pricing labels  ("GOOD" | "FAIR" | "POOR")
+  value5?: string[];    // Overall scores  (numeric strings)
 }

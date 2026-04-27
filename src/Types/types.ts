@@ -1,7 +1,7 @@
 
 // Shared interfaces & constants for all chart components
 
-export type ChartType = 'line' | 'bar' | 'pie' | 'doughnut' | 'radar'| 'halfDoughnut' | 'gauge' | 'heatmap';
+export type ChartType = 'line' | 'bar' | 'pie' | 'doughnut' | 'radar'| 'halfDoughnut' | 'gauge' | 'heatmap'| 'table';
 
 export interface ChartDataset {
   label?: string;

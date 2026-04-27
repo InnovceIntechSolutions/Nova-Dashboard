@@ -7,7 +7,7 @@ export interface HeaderProps {
   style?: React.CSSProperties;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, subtitle, userName, style }) => {
+const Header: React.FC<HeaderProps> = ({ title}) => {
   // Hardcoded JSON configuration inside the Header component
   const config = {
     id: "header",
@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ title, subtitle, userName, style }) => 
   };
 
   // Destructure the props from the config if they are not passed
-  const { title: configTitle, subtitle: configSubtitle, userName: configUserName } = config.props;
+  const { title: configTitle } = config.props;
 
   return (
     <div className="page-header page-header-light shadow mb-4 position-sticky top-0 bg-white" style={{ zIndex: 1000}}>

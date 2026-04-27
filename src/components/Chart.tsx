@@ -94,6 +94,7 @@ const Chart: React.FC<ChartProps> = ({
       case 'halfDoughnut':  return <HalfDoughnutChart {...sharedProps} />;
       case 'gauge':         return <GaugeChart        {...sharedProps} />;
       case 'heatmap':  return <HeatmapChart  {...sharedProps} />;
+     
       case 'line':
       default:         return <LineChart     {...sharedProps} />;
     }

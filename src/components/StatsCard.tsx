@@ -16,9 +16,7 @@ const StatsCard: React.FC<StatsCardProps> = ({
   value,
   subtitle,
   trend,
-  icon,
   details,
-  style,
 }) => {
   const [animateValue, setAnimateValue] = useState(false);
 

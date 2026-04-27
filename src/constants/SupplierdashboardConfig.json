@@ -1,33 +1,13 @@
 {
   "dashboard": {
     "layout": [
-      {
-        "id": "Pending Invoices",
-        "type": "component",
-        "component": "StatsCard",
-        "endpoint": "Pending Invoices",
-        "position": {
-          "row": 1,
-          "column": 1,
-          "span": 3
-        }
-      },
-      {
-        "id": "Active Suppliers",
-        "type": "component",
-        "component": "StatsCard",
-        "endpoint": "Active Suppliers",
-        "position": {
-          "row": 1,
-          "column": 2,
-          "span": 3
-        }
-      },
+    
        {
         "id": "Payment Received",
         "type": "component",
         "component": "StatsCard",
         "endpoint": "Payment Received",
+         "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 1,
           "column": 3,
@@ -39,6 +19,7 @@
         "type": "component",
         "component": "StatsCard",
         "endpoint": "Quality Score",
+         "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 1,
           "column": 4,
@@ -50,6 +31,7 @@
         "type": "component",
         "component": "StatsCard",
         "endpoint": "Active POs",
+         "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 2,
           "column": 1,
@@ -61,71 +43,14 @@
         "type": "component",
         "component": "StatsCard",
         "endpoint": "Invoices This Month",
+         "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 2,
           "column": 2,
           "span": 3
         }
-      },
-      {
-        "id": "Supplier Performance",
-        "type": "component",
-        "component": "StatsCard",
-        "endpoint": "Supplier Performance",
-        "position": {
-          "row": 2,
-          "column": 3,
-          "span": 3
-        }
-      },
-      {
-        "id": "Open POS",
-        "type": "component",
-        "component": "StatsCard",
-        "endpoint": "Open POS",
-        "position": {
-          "row": 2,
-          "column": 4,
-          "span": 3
-        }
-      },
-       {
-        "id": "Action Required",
-        "type": "component",
-        "component": "TaskList",
-        "endpoint": "Action Required",
-        "position": {
-          "row": 3,
-          "column": 1,
-          "span": 6
-        }
-      },
-    {
-  "id": "Category Wise Spend",
-  "type": "component",
-  "component": "Chart",
-  "endpoint": "Category Wise Spend",
-  "chartType": "Bar",
-  "position": {
-    "row": 3,
-    "column": 2,
-    "span": 6
-  }
-},
-{
-  "id": "spend_vs_budget",
-  "type": "component",
-  "component": "Chart",
-  "endpoint": "Monthly Spend Trend",
-  
-    "chartType": "Bar-line",
-    "slotId": "074CD6F44-1FAD-4499-911C-9092395EDE61C3BEA3AF-C9B7-4DEA-AE35-EA1C626191C00314393C-29B4-4E60-8D11-595EDAAAC42F00",
-  "position": {
-    "row": 4,
-    "column": 1,
-    "span": 6
-  }
-}
-    ]
+      }
+     
+  ]
   }
 }

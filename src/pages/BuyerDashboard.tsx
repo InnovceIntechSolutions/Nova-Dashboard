@@ -37,7 +37,7 @@ const componentMap: Record<string, React.ComponentType<any>> = {
   Table: SupplierScorecardGrid, 
 };
 
-const SupplierDashboard: React.FC<DashboardProps> = ({ layoutData }) => {
+const BuyerDashboard: React.FC<DashboardProps> = ({ layoutData }) => {
   const [dataMap, setDataMap] = useState<Record<string, any>>({});
 
   // ✅ Fetch API data for all widgets`
@@ -160,4 +160,4 @@ const SupplierDashboard: React.FC<DashboardProps> = ({ layoutData }) => {
   );
 };
 
-export default SupplierDashboard;
+export default BuyerDashboard;
