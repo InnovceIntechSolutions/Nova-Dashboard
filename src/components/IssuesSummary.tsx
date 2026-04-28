@@ -87,7 +87,9 @@ const IssuesSummary: React.FC<IssuesSummaryProps> = ({ title, subtitle, issues =
             ))}
           </ul>
         ) : (
-          <p className="text-center text-muted">No issues found</p>
+          <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '200px' }}>
+            <p className="text-center text-muted">No issues found</p>
+          </div>
         )}
       </div>
     </div>

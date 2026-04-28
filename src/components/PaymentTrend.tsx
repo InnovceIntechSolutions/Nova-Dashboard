@@ -50,7 +50,7 @@ const PaymentTrend: React.FC<FinancialSummaryProps> = ({
       {/* List */}
       <div style={{ padding: '8px 16px 8px' }}>
         {items.length === 0 ? (
-          <div style={{ padding: '30px 20px', textAlign: 'center', color: '#9ca3af', fontSize: 14 }}>
+          <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '200px' }}>
             No payment data available
           </div>
         ) : (

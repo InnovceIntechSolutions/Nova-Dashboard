@@ -139,7 +139,7 @@ const SupplierDashboard: React.FC<DashboardProps> = ({ layoutData }) => {
   return (
     <>
       <Header />
-      <div className="container">
+      <div className="container" style={{ maxWidth: '1600px' }}>
         {sortedRows.map((row) => {
           const widgets = groupedByRow[row];
 

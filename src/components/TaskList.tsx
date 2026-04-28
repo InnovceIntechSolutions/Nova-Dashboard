@@ -26,7 +26,7 @@ const TaskList: React.FC<TaskListProps> = ({ title, subtitle, tasks = [], showCo
   const displayTasks = tasks.slice(0, showCount);
 
   return (
-    <div className="task-list card border-0 shadow-sm h-100" >
+    <div className="task-list card border-0 shadow-sm h-100" style={{ minHeight: '200px' }}>
       <div className="card-header bg-transparent border-bottom">
         <div className="d-flex justify-content-between align-items-center">
           <div>
@@ -69,7 +69,9 @@ const TaskList: React.FC<TaskListProps> = ({ title, subtitle, tasks = [], showCo
             </div>
           ))
         ) : (
-          <p className="text-center text-muted">No Actions available</p>
+          <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '200px' }}>
+            <p className="text-center text-muted">No Actions available</p>
+          </div>
         )}
       </div>
 
