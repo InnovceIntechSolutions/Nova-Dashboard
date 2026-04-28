@@ -23,11 +23,11 @@ const Timeline: React.FC<TimelineProps> = ({ title, subtitle, events = [], showC
   const displayEvents = events.slice(0, showCount);
 
   return (
-    <div className="timeline card border-0 shadow-sm h-100">
+    <div className="timeline card border-0 shadow-sm h-100"style={{ minHeight: '200px' }}>
       <div className="card-header bg-transparent border-bottom">
         <div className="d-flex justify-content-between align-items-center">
           <div>
-            <h5 className="mb-0">{title || '📅 Recent Activity'}</h5>
+            <h5 className="mb-0">{title || ' Recent Activity'}</h5>
             {subtitle && <p className="text-muted mb-0">{subtitle}</p>}
           </div>
         </div>
@@ -51,7 +51,9 @@ const Timeline: React.FC<TimelineProps> = ({ title, subtitle, events = [], showC
             ))}
           </div>
         ) : (
-          <p className="text-center text-muted">No activity available</p>
+          <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '200px' }}>
+            <p className="text-center text-muted">No activity available</p>
+          </div>
         )}
       </div>
 

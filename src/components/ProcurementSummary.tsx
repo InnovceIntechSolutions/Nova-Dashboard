@@ -47,13 +47,13 @@ const ProcurementSummary: React.FC<ProcurementSummaryProps> = ({
 
   return (
     <div
-      className="card shadow-sm border-0 rounded-3"
+      className="card shadow-sm border-0 rounded-3 h-100"
       style={{ fontFamily: "'DM Sans', sans-serif", ...style }}
     >
       {/* Header */}
       <div style={{ padding: '16px 20px 10px', borderBottom: '1px solid #f0f0f0' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ fontSize: 18 }}>📊</span>
+          {/* <span style={{ fontSize: 18 }}>📊</span> */}
           <div style={{ fontSize: 15, fontWeight: 700, color: '#111827', letterSpacing: '-0.01em' }}>
             {title.toUpperCase()}
           </div>
@@ -67,17 +67,7 @@ const ProcurementSummary: React.FC<ProcurementSummaryProps> = ({
 
       <div style={{ padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: 16 }}>
         {!hasSummaryData ? (
-          <div
-            style={{
-              padding: '40px 24px',
-              borderRadius: 10,
-              background: '#f9fafb',
-              border: '1px solid #e5e7eb',
-              color: '#6b7280',
-              fontSize: 13,
-              textAlign: 'center',
-            }}
-          >
+        <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '200px' }}>
             No summary available
           </div>
         ) : (

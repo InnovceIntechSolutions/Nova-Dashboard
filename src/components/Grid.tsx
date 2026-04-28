@@ -114,7 +114,7 @@ const SupplierScorecardGrid: React.FC<SupplierScorecardProps> = (props) => {
 
   return (
     <div
-      className="card shadow-sm border-0 rounded-3"
+      className="card shadow-sm border-0 rounded-3 h-100"
       style={{ overflow: 'hidden', fontFamily: "'DM Sans', sans-serif", ...style }}
     >
       {/* Header */}

@@ -38,7 +38,7 @@ const IssuesDeviations: React.FC<IssuesDeviationsProps> = ({
           gap: 8,
         }}
       >
-        <span style={{ fontSize: 18 }}>⚠️</span>
+      
         <span style={{ fontSize: 15, fontWeight: 700, color: '#111827', letterSpacing: '-0.01em' }}>
           {title.toUpperCase()}
         </span>
@@ -47,7 +47,7 @@ const IssuesDeviations: React.FC<IssuesDeviationsProps> = ({
       {/* List */}
       <div style={{ padding: '8px 16px 8px' }}>
         {items.length === 0 ? (
-          <div style={{ padding: '30px 20px', textAlign: 'center', color: '#9ca3af', fontSize: 14 }}>
+          <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '200px' }}>
             No issues found 
           </div>
         ) : (
