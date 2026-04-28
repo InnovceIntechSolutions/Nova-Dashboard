@@ -14,3 +14,7 @@ body{
   opacity: 1;
   transform: scale(1);
 }
+
+.task-list .card-body, .timeline .timeline-body{
+  min-height: 200px;
+}

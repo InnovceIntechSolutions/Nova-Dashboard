@@ -20,7 +20,7 @@ const QuickActions: React.FC<QuickActionsProps> = ({ actions = [], style }) => {
         
         {/* Header */}
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <h6 className="mb-0 fw-bold text-dark"> ⚡ Quick Actions</h6>
+          <h6 className="mb-0 fw-bold text-dark">Quick Actions</h6>
         </div>
 
         {/* Grid */}

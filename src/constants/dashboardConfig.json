@@ -116,7 +116,7 @@
         "type": "component",
         "component": "TaskList",
         "props": {
-          "title": "🔔 WORK QUEUE",
+          "title": " WORK QUEUE",
           "subtitle": "6 tasks pending",
           "tasks": [
             {

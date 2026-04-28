@@ -38,7 +38,7 @@ const IssuesDeviations: React.FC<IssuesDeviationsProps> = ({
           gap: 8,
         }}
       >
-        <span style={{ fontSize: 18 }}>⚠️</span>
+        {/* <span style={{ fontSize: 18 }}></span> */}
         <span style={{ fontSize: 15, fontWeight: 700, color: '#111827', letterSpacing: '-0.01em' }}>
           {title.toUpperCase()}
         </span>
