@@ -1,4 +1,3 @@
-// src/components/TaskList.tsx
 import React from 'react';
 
 export interface Task {
@@ -11,7 +10,6 @@ export interface Task {
   daysRemaining: number;
   badge: string;
   actions?: Array<{ label: string; action: string; style: string }>;
-  metadata?: Record<string, any>;
 }
 
 export interface TaskListProps {
@@ -22,62 +20,153 @@ export interface TaskListProps {
   viewAllLink?: string;
 }
 
-const TaskList: React.FC<TaskListProps> = ({ title, subtitle, tasks = [], showCount = 5, viewAllLink }) => {
+const TaskList: React.FC<TaskListProps> = ({
+  title,
+  subtitle,
+  tasks = [],
+  showCount = 5,
+  viewAllLink,
+}) => {
   const displayTasks = tasks.slice(0, showCount);
 
+  const getPriorityColor = (priority: string) => {
+    if (priority === 'High') return 'var(--danger)';
+    if (priority === 'Medium') return 'var(--warning)';
+    return 'var(--success)';
+  };
+
+  const getDueText = (task: Task) => {
+    if (task.daysRemaining < 0)
+      return `Overdue by ${Math.abs(task.daysRemaining)} days`;
+    if (task.daysRemaining === 0) return 'Due Today';
+    return `${task.daysRemaining} days remaining`;
+  };
+
   return (
-    <div className="task-list card border-0 shadow-sm h-100" style={{ minHeight: '200px' }}>
-      <div className="card-header bg-transparent border-bottom">
+    <div className="corp-card h-100">
+      {/* Header */}
+      <div className="p-3 border-bottom">
         <div className="d-flex justify-content-between align-items-center">
           <div>
-            <h5 className="mb-0">{title || 'Action Required'}</h5>
-            {subtitle && <p className="text-muted mb-0">{subtitle}</p>}
+            <div className="corp-title">
+              {title || 'Work Queue'}
+            </div>
+            {subtitle && (
+              <div className="corp-subtext">{subtitle}</div>
+            )}
           </div>
+
           {tasks.length > 0 && (
-            <span className="badge bg-info">{tasks.length} Tasks</span>
+            <span
+              className="corp-badge"
+              style={{
+                background: '#eef2ff',
+                color: 'var(--primary)',
+              }}
+            >
+              {tasks.length}
+            </span>
           )}
         </div>
       </div>
 
-      <div className="card-body p-0">
+      {/* Body */}
+      <div className="p-2">
         {displayTasks.length > 0 ? (
-          displayTasks.map((task) => (
-            <div key={task.id} className="task-item d-flex justify-content-between align-items-start p-3 border-bottom">
-              <div>
-                <h6 className="task-title mb-1">{task.title}</h6>
-                <p className="task-description text-muted mb-1">{task.description}</p>
-                <p className="task-due-date small text-muted">Due: {task.dueDate}</p>
-              </div>
-              <div className="text-end">
-                <span className={`badge rounded-pill bg-${task.priority === 'High' ? 'danger' : task.priority === 'Medium' ? 'warning' : 'success'}`}>
-                  {task.badge}
-                </span>
-                {task.actions && task.actions.length > 0 && (
-                  <div className="mt-2 d-flex gap-2 justify-content-end w-100">
-                    {task.actions.map((action, idx) => (
-                      <button
-                        key={idx}
-                        className={`btn btn-sm ${action.style === 'primary' ? 'btn-outline-primary' : 'btn-outline-secondary'} mb-1`}
-                        onClick={() => window.location.href = action.action}
+          displayTasks.map((task) => {
+            const color = getPriorityColor(task.priority);
+
+            return (
+              <div
+                key={task.id}
+                className="corp-hover"
+                style={{
+                  padding: 12,
+                  borderRadius: 8,
+                  border: '1px solid var(--border)',
+                  marginBottom: 8,
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                }}
+              >
+                {/* LEFT */}
+                <div style={{ maxWidth: '70%' }}>
+                  <div className="corp-title">
+                    {task.title}
+                  </div>
+
+                  <div className="corp-subtext">
+                    {task.description}
+                  </div>
+
+                  <div
+                    style={{
+                      fontSize: 11,
+                      color:
+                        task.daysRemaining < 0
+                          ? 'var(--danger)'
+                          : task.daysRemaining === 0
+                          ? 'var(--warning)'
+                          : 'var(--text-secondary)',
+                    }}
+                  >
+                    {getDueText(task)}
+                  </div>
+                </div>
+
+                {/* RIGHT */}
+                <div className="text-end">
+                  {/* Badge */}
+                  <div
+                    className="corp-badge"
+                    style={{
+                      background: `${color}15`,
+                      color: color,
+                      marginBottom: 6,
+                    }}
+                  >
+                    {task.badge}
+                  </div>
+
+                  {/* Actions */}
+                  <div className="d-flex gap-1 justify-content-end">
+                    {task.actions?.map((a, i) => (
+                      <div
+                        key={i}
+                        className="corp-chip"
+                        onClick={() =>
+                          (window.location.href = a.action)
+                        }
                       >
-                        {action.label}
-                      </button>
+                        {a.label}
+                      </div>
                     ))}
                   </div>
-                )}
+                </div>
               </div>
-            </div>
-          ))
+            );
+          })
         ) : (
-          <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '200px' }}>
-            <p className="text-center text-muted">No Actions available</p>
+          <div className="text-center corp-subtext p-4">
+            No Actions available
           </div>
         )}
       </div>
 
+      {/* Footer */}
       {viewAllLink && tasks.length > showCount && (
-        <div className="card-footer bg-transparent border-top text-center">
-          <a href={viewAllLink} className="btn btn-link text-decoration-none">View All Tasks →</a>
+        <div className="text-center border-top p-2">
+          <a
+            href={viewAllLink}
+            style={{
+              fontSize: 13,
+              color: 'var(--primary)',
+              textDecoration: 'none',
+              fontWeight: 500,
+            }}
+          >
+            View All →
+          </a>
         </div>
       )}
     </div>
