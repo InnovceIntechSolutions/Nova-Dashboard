@@ -66,6 +66,36 @@ body{
 }
 
 
+.corp-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e5e7eb;
+  border-radius: 6px;
+}
+
+.corp-skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150px;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(300px);
+  }
+}
+
+
 .value-zoom {
   display: inline-block;
   opacity: 0;
@@ -81,4 +111,23 @@ body{
 
 .task-list .card-body, .timeline .timeline-body{
   min-height: 200px;
+}
+
+
+
+.timeline-line {
+  position: absolute;
+  left: 16px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #e5e7eb;
+}
+
+.timeline-line-fill {
+  position: absolute;
+  left: 16px;
+  top: 0;
+  width: 2px;
+  background: var(--primary);
 }
