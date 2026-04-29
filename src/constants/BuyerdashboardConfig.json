@@ -7,6 +7,7 @@
         "type": "component",
         "component": "StatsCard",
         "endpoint": "Pending Invoices",
+        "apitype": "Status Card",
          "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 1,
@@ -21,6 +22,7 @@
         "component": "StatsCard",
         "endpoint": "Active Suppliers",
           "param": "Vertiv India - Pune Plant",
+          "apitype": "Status Card",
         "position": {
           "row": 1,
           "column": 2,
@@ -34,6 +36,7 @@
         "component": "StatsCard",
         "endpoint": "Supplier Performance",
          "param": "Vertiv India - Pune Plant",
+         "apitype": "Status Card",
         "position": {
           "row": 1,
           "column": 3,
@@ -47,6 +50,7 @@
         "component": "StatsCard",
         "endpoint": "Open POS",
          "param": "Vertiv India - Pune Plant",
+         "apitype": "Status Card",
         "position": {
           "row": 1,
           "column": 4,
@@ -59,6 +63,7 @@
         "type": "component",
         "component": "TaskList",
         "endpoint": "Action Required",
+        "apitype": "TaskList",
          "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 3,
@@ -72,7 +77,7 @@
   "type": "component",
   "component": "Chart",
   "endpoint": "Monthly Spend Trend",
-  
+  "apitype": "Bar-line",
     "chartType": "Bar-line",
      "param": "Vertiv India - Pune Plant",
     "slotId": "074CD6F44-1FAD-4499-911C-9092395EDE61C3BEA3AF-C9B7-4DEA-AE35-EA1C626191C00314393C-29B4-4E60-8D11-595EDAAAC42F00",
@@ -89,6 +94,7 @@
   "component": "Table",  
   "endpoint": "Supplier ScoreCard",        
   "param": "Vertiv India - Pune Plant",
+  "apitype": "Table",
   "slotId": "074CD6F44-1FAD-4499-911C-9092395EDE61C3BEA3AF-C9B7-4DEA-AE35-EA1C626191C00314393C-29B4-4E60-8D11-595EDAAAC42F00",
   "position": {
     "row": 3,
@@ -104,6 +110,7 @@
   "component": "Chart",
   "endpoint": "Category Wise Spend",
    "param": "VERTIV ENERGY PRIVATE LIMITED",
+   "apitype": "Bar",
   "chartType": "Bar",
   "position": {
     "row": 4,

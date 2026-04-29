@@ -29,6 +29,7 @@ export interface WidgetLayout {
   id: string;
   type: string;
   component: string;
+  apitype: string; 
   endpoint?: string; // ADD THIS
   props?: WidgetProps; // make optional
   style?: React.CSSProperties; // optional

@@ -8,6 +8,7 @@
         "component": "StatsCard",
         "endpoint": "Payment Received",
          "param": "Vertiv India - Pune Plant",
+         "apitype":"Status Card",
         "position": {
           "row": 1,
           "column": 1,
@@ -19,6 +20,7 @@
         "type": "component",
         "component": "StatsCard",
         "endpoint": "Quality Score",
+        "apitype":"Status Card",
          "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 1,
@@ -31,6 +33,7 @@
         "type": "component",
         "component": "StatsCard",
         "endpoint": "Active POs",
+        "apitype":"Status Card",
          "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 1,
@@ -43,6 +46,7 @@
         "type": "component",
         "component": "StatsCard",
         "endpoint": "Invoices This Month",
+        "apitype":"Status Card",
          "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 1,
@@ -50,86 +54,68 @@
           "span": 3
         }
       },
-      {
-        "id": "buyer_tasks",
+    
+       {
+        "id": "Action Required",
         "type": "component",
         "component": "TaskList",
-        "props": {
-          "title": " WORK QUEUE",
-          "subtitle": "6 tasks pending",
-          "tasks": [
-            {
-              "id": "task_1",
-              "priority": "URGENT",
-              "title": "Approve Invoice INV-2026-101",
-              "description": "Pending approval from finance",
-              "dueDate": "Today 4:00 PM",
-              "badge": "🔴 URGENT",
-              "actions": [
-                {
-                  "label": "Approve",
-                  "action": "approve_invoice",
-                  "style": "primary"
-                }
-              ]
-            },
-            {
-              "id": "task_2",
-              "priority": "HIGH",
-              "title": "Review PO Change Request",
-              "description": "Supplier requested qty update",
-              "dueDate": "Tomorrow",
-              "badge": "🟡 HIGH",
-              "actions": [
-                {
-                  "label": "Review",
-                  "action": "review_po",
-                  "style": "primary"
-                }
-              ]
-            }
-          ]
-        },
+        "endpoint": "Action Required",
+        "apitype": "TaskList",
+         "param": "Vertiv India - Pune Plant",
         "position": {
-          "row": 2,
-          "column": 1,
+          "row": 3,
+          "column": 2,
           "span": 6
         }
       },
- {
-        "id": "recent_activity",
-        "type": "component",
-        "component": "Timeline",
-        "props": {
-          "title": "📅 RECENT ACTIVITY",
-          "events": [
-            {
-              "id": "e1",
-              "icon": "🟢",
-              "title": "Invoice Approved",
-              "timestamp": "Today"
-            },
-            {
-              "id": "e2",
-              "icon": "🔵",
-              "title": "PO Created",
-              "timestamp": "Yesterday"
-            }
-          ]
-        },
-        "position": {
-          "row": 2,
-          "column": 7,
-          "span": 6
-        }
-      },
+{
+  "id": "Recent Activity",
+  "type": "component",
+  "component": "Timeline",        
+  "endpoint": "Recent Activity",
+  "apitype": "Line",
+  "param": "Vertiv India - Pune Plant",
+  "position": {
+    "row": 2,
+    "column": 2,
+    "span": 6
+  }
+},
+{
+  "id": "Financial Summary",
+  "type": "component", 
+  "component": "FinancialSummary",
+  "endpoint": "Financial Summary",
+  "apitype": "Table-column",
+  "param": "Vertiv India - Pune Plant",
+  "position": {
+    "row": 2,
+    "column": 2,
+    "span": 6
+  }
+},
+{
+  "id": "Payment Trend",
+  "type": "component",
+  "component": "Chart",
+  "endpoint": "Payment Trend",
+  "apitype": "Table-Details",
+    "chartType": "line",
+     "param": "Vertiv India - Pune Plant",
+  
+  "position": {
+    "row": 3,
+    "column": 1,
+    "span": 6
+  }
+},
       {
   "id": "issues_deviations",
   "type": "component",
   "component": "IssuesDeviations",
   "position": {
-    "row": 3,
-    "column": 1,
+    "row": 4,
+    "column": 2,
     "span": 6
   },
   "props": {
@@ -142,51 +128,15 @@
     ]
   }
 },
-{
-  "id": "financial_summary",
-  "type": "component",
-  "component": "FinancialSummary",
-  "position": {
-    "row": 3,
-    "column": 2,
-    "span": 6
-  },
-  "props": {
-    "title": "FINANCIAL SUMMARY",
-    "items": [
-      { "label": "Invoices Raised (This Month)", "value": "₹2,500,000", "color": "default" },
-      { "label": "Payment Received",             "value": "₹1,800,000", "color": "green"   },
-      { "label": "Outstanding Amount",           "value": "₹700,000",   "color": "amber"   },
-      { "label": "Avg Payment Cycle",            "value": "28 days",    "color": "default" }
-    ]
-  }
-},
-{
-  "id": "payment_trend",
-  "type": "component",
-  "component": "PaymentTrend",
-  "position": {
-    "row": 3,
-    "column": 2,
-    "span": 6
-  },
-  "props": {
-    "title": "PAYMENT TREND",
-    "items": [
-      { "label": "Invoices Raised (This Month)", "value": "₹2,500,000", "color": "default" },
-      { "label": "Payment Received",             "value": "₹1,800,000", "color": "green"   },
-      { "label": "Outstanding Amount",           "value": "₹700,000",   "color": "amber"   },
-      { "label": "Avg Payment Cycle",            "value": "28 days",    "color": "default" }
-    ]
-  }
-},
+
+
 {
   "id": "invoice_breakdown",
   "type": "component",
   "component": "InvoiceBreakdown",
   "position": {
-    "row": 3,
-    "column": 2,
+    "row": 4,
+    "column": 1,
     "span": 6
   },
   "props": {
@@ -218,7 +168,7 @@
           ]
         },
         "position": {
-          "row": 4,
+          "row": 5,
           "column": 1,
           "span": 12
         }

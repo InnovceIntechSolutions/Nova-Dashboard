@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { WidgetLayout } from '../constants/types';
 import { fetchDashboardData } from '../services/dashboardapi'; // adjust path 
-
+import { useSearch } from '../Context/SearchContext';
 import Calendar from '../components/Calendar';
 import Chart from '../components/Chart';
 import Header from '../components/Header';
@@ -45,42 +45,37 @@ const componentMap: Record<string, React.ComponentType<any>> = {
 
 const SupplierDashboard: React.FC<DashboardProps> = ({ layoutData }) => {
   const [dataMap, setDataMap] = useState<Record<string, any>>({});
+ const { filters } = useSearch();
+ // Re-fetch whenever filters change
+useEffect(() => {
+  const loadData = async () => {
+    const results: Record<string, any> = {};
 
-  // ✅ Fetch API data for all widgets`
-  useEffect(() => {
-    const loadData = async () => {
-      const results: Record<string, any> = {};
-
-      await Promise.all(
-        layoutData.map(async (item) => {
-          if (item.endpoint) {
-            try {
-              let type = "Status Card";
-
-              if (item.component === "TaskList") {
-                type = "TaskList";
-              }
-                if (item.component === "Chart") {
-  type = item.chartType || item.props?.chartType || "Bar";
-}
-// ✅ Table type: fetches scorecard data
-              if (item.component === 'Table') {
-                type = 'Table';
-              }
-              const data = await fetchDashboardData(type, item.endpoint,item.param, item.slotId);
-              results[item.id] = data;
-            } catch (err) {
-              console.error(`Error loading ${item.endpoint}`, err);
-            }
+    await Promise.all(
+      layoutData.map(async (item) => {
+        if (item.endpoint) {
+          try {
+            const type = item.apitype || 'Status Card';
+            const data = await fetchDashboardData(
+              type,
+              item.endpoint,
+              item.param,
+              item.slotId,
+              filters           // pass filters here
+            );
+            results[item.id] = data;
+          } catch (err) {
+            console.error(`Error loading ${item.endpoint}`, err);
           }
-        })
-      );
+        }
+      })
+    );
 
-      setDataMap(results);
-    };
+    setDataMap(results);
+  };
 
-    loadData();
-  }, [layoutData]);
+  loadData();
+}, [layoutData, filters]);  // re-run when filters change
 
  const renderWidget = (item: WidgetLayout) => {
   const Component = componentMap[item.component];
@@ -92,18 +87,23 @@ const SupplierDashboard: React.FC<DashboardProps> = ({ layoutData }) => {
     return <Shimmer />;
   }
 
+  //  API returned null/empty — render nothing
+  if (item.endpoint && !apiData) {
+    return null;
+  }
+
     if (item.component === 'Table' && apiData) {
       return <Component {...apiData} style={item.style || {}} />;
     }
 
-  // ✅ FIX FOR CHART
+  //  FIX FOR CHART
   if (item.component === "Chart" && apiData) {
      const chartData = apiData.data
-    ? apiData.data // ✅ for bar-line
+    ? apiData.data //for bar-line
     : {
         labels: apiData.labels || [],
         datasets: apiData.datasets || [],
-      }; // ✅ for bar
+      }; // for bar
     return (
       <Component
         title={apiData.title}

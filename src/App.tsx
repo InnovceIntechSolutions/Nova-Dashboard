@@ -8,7 +8,7 @@ import type { WidgetLayout } from './constants/types';
 import dashboardConfig from './constants/dashboardConfig.json';
 import SupplierdashboardConfig from './constants/SupplierdashboardConfig.json';
 import BuyerdashboardConfig from './constants/BuyerdashboardConfig.json';
-
+import { SearchProvider } from './Context/SearchContext';
 // ─── Spinner 
 
 const Spinner: React.FC = () => (
@@ -103,15 +103,18 @@ const App: React.FC = () => {
   }
 
   return (
-    <BrowserRouter basename="/dashboard">
+  <BrowserRouter basename="/dashboard">
+    <SearchProvider>
       <Routes>
-        <Route path="/"        element={<Dashboard         layoutData={layoutData}         />} />
+        <Route path="/"         element={<Dashboard         layoutData={layoutData}         />} />
         <Route path="/supplier" element={<SupplierDashboard layoutData={supplierLayoutData} />} />
         <Route path="/buyer"    element={<BuyerDashboard    layoutData={buyerLayoutData}    />} />
         <Route path="*"         element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
-  );
+    </SearchProvider>
+  </BrowserRouter>
+);
+
 };
 
 export default App;
