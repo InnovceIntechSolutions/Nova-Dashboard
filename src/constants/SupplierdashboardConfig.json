@@ -57,6 +57,7 @@
     
        {
         "id": "Action Required",
+        "title": "ACTION REQUIRED",
         "type": "component",
         "component": "TaskList",
         "endpoint": "Action Required",
@@ -70,6 +71,7 @@
       },
 {
   "id": "Recent Activity",
+  "title": "RECENT ACTIVITY",
   "type": "component",
   "component": "Timeline",        
   "endpoint": "Recent Activity",
@@ -83,6 +85,7 @@
 },
 {
   "id": "Financial Summary",
+  "title": "FINANCIAL SUMMARY",
   "type": "component", 
   "component": "FinancialSummary",
   "endpoint": "Financial Summary",
@@ -96,6 +99,7 @@
 },
 {
   "id": "Payment Trend",
+  "title": "PAYMENT TREND",
   "type": "component",
   "component": "Chart",
   "endpoint": "Payment Trend",

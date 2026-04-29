@@ -8,6 +8,8 @@ import type { BaseChartProps } from '../../../Types/types';
 
 
 const GaugeChart: React.FC<BaseChartProps> = ({ data, options = {} }) => {
+  
+
   // For gauge: use first dataset's first value as the gauge value (0–100)
   const value = data.datasets[0]?.data[0] ?? 0;
   const label = data.datasets[0]?.label ?? data.labels[0] ?? 'Value';
@@ -91,7 +93,14 @@ const GaugeChart: React.FC<BaseChartProps> = ({ data, options = {} }) => {
     ],
     ...options,
   }), [value, label, options]);
-
+  
+if ( data.datasets[0].data.length === 0) {
+    return (
+      <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '200px' }}>
+        No data available
+      </div>
+    );
+  }
   return (
     <ReactECharts
       option={echartsOption}

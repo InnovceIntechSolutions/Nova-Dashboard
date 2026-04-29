@@ -98,7 +98,13 @@ const HeatmapChart: React.FC<HeatmapProps> = ({ data }) => {
       }
     ]
   };
-
+if (data.length === 0 || heatmapData.length === 0 ||data?.flatData.length === 0) {
+    return (
+      <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '200px' }}>
+        No data available
+      </div>
+    );
+  }
   return (
     <div style={{ width: "100%", height: "350px" }}> {/* 🔥 FIX HEIGHT */}
       <ReactECharts option={option} style={{ height: "100%" }} />

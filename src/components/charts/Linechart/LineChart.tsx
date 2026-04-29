@@ -51,6 +51,13 @@ const LineChart: React.FC<BaseChartProps> = ({ data, options = {} }) => {
       ...options,
     };
   }, [data, options]);
+ if (data.datasets.length === 0) {
+    return (
+      <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '200px' }}>
+        No data available
+      </div>
+    );
+  }
 
   return (
     <ReactECharts

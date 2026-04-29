@@ -148,7 +148,7 @@ const TaskList: React.FC<TaskListProps> = ({
           })
         ) : (
           <div className="text-center corp-subtext p-4">
-            No Actions available
+            No Tasks available
           </div>
         )}
       </div>

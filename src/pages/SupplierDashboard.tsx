@@ -18,7 +18,7 @@ import HeatmapChart from '../components/Heatmap/HeatmapOnCartesian';
 import SupplierScorecardGrid from '../components/Grid';
 import IssuesDeviations from '../components/IssueDeviations';
 import PaymentTrend from '../components/PaymentTrend';
-import InvoiceBreakdown from '../components/Invoicebreakdown';  
+import InvoiceBreakdown from '../components/Invoicebreakdown';
 interface DashboardProps {
   layoutData: WidgetLayout[];
 }
@@ -36,7 +36,7 @@ const componentMap: Record<string, React.ComponentType<any>> = {
   FinancialSummary,
   QuickActions,
   HeatmapChart,
-  Table: SupplierScorecardGrid, 
+  Table: SupplierScorecardGrid,
 
   IssuesDeviations,
   PaymentTrend,
@@ -45,77 +45,85 @@ const componentMap: Record<string, React.ComponentType<any>> = {
 
 const SupplierDashboard: React.FC<DashboardProps> = ({ layoutData }) => {
   const [dataMap, setDataMap] = useState<Record<string, any>>({});
- const { filters } = useSearch();
- // Re-fetch whenever filters change
-useEffect(() => {
-  const loadData = async () => {
-    const results: Record<string, any> = {};
+  const { filters } = useSearch();
+  // Re-fetch whenever filters change
+  useEffect(() => {
+    const loadData = async () => {
+      const results: Record<string, any> = { ...dataMap };
 
-    await Promise.all(
-      layoutData.map(async (item) => {
-        if (item.endpoint) {
-          try {
-            const type = item.apitype || 'Status Card';
-            const data = await fetchDashboardData(
-              type,
-              item.endpoint,
-              item.param,
-              item.slotId,
-              filters           // pass filters here
-            );
-            results[item.id] = data;
-          } catch (err) {
-            console.error(`Error loading ${item.endpoint}`, err);
-          }
-        }
-      })
-    );
+      await Promise.all(
+        layoutData.map(async (item) => {
+          if (item.endpoint) {
+            try {
+              const type = item.apitype || 'Status Card';
+              const data = await fetchDashboardData(
+                type,
+                item.endpoint,
+                item.param,
+                item.slotId,
+                filters           // pass filters here
+              );
+                if (data !== undefined && data !== null) {
 
-    setDataMap(results);
+  results[item.id] = {
+    ...results[item.id], // keeps original id
+    ...data              // update everything else
   };
+}else{
+  results[item.id] = {
+    id: item.id, // keeps original id
+    title:item.title|| '',
+    ...data              // update everything else
+  };// set to null or undefined
+}
 
-  loadData();
-}, [layoutData, filters]);  // re-run when filters change
+            } catch (err) {
+              console.error(`Error loading ${item.endpoint}`, err);
+            }
+          }
+        })
+      );
 
- const renderWidget = (item: WidgetLayout) => {
-  const Component = componentMap[item.component];
-  if (!Component) return <Shimmer />;
+      setDataMap(results);
+    };
 
-  const apiData = dataMap[item.id];
+    loadData();
+  }, [layoutData, filters]);  // re-run when filters change
 
-  if (item.endpoint && !apiData) {
-    return <Shimmer />;
-  }
+  const renderWidget = (item: WidgetLayout) => {
+    const Component = componentMap[item.component];
+    if (!Component) return <Shimmer />;
 
-  //  API returned null/empty — render nothing
-  if (item.endpoint && !apiData) {
-    return null;
-  }
+    const apiData = dataMap[item.id];
+
+    if (item.endpoint && apiData === undefined) {
+      return <Shimmer />;
+    }
 
     if (item.component === 'Table' && apiData) {
       return <Component {...apiData} style={item.style || {}} />;
     }
 
-  //  FIX FOR CHART
-  if (item.component === "Chart" && apiData) {
-     const chartData = apiData.data
-    ? apiData.data //for bar-line
-    : {
-        labels: apiData.labels || [],
-        datasets: apiData.datasets || [],
-      }; // for bar
-    return (
-      <Component
-        title={apiData.title}
-        subtitle={apiData.subtitle}
-        chartType={apiData.chartType?.toLowerCase()}
-        data={chartData}
-      />
-    );
-  }
+    //  FIX FOR CHART
+    if (item.component === "Chart" && apiData) {
+      const chartData = apiData.data
+        ? apiData.data //for bar-line
+        : {
+          labels: apiData.labels || [],
+          datasets: apiData.datasets || [],
+        }; // for bar
+      return (
+        <Component
+          title={apiData.title}
+          subtitle={apiData.subtitle}
+          chartType={apiData.chartType?.toLowerCase()}
+          data={chartData}
+        />
+      );
+    }
 
-  return <Component {...apiData} style={item.style || {}} />;
-};
+    return <Component {...apiData} style={item.style || {}} />;
+  };
 
   const getColClass = (span: number) => {
     const safeSpan = Math.min(Math.max(span, 1), 12);

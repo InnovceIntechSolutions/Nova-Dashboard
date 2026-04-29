@@ -177,7 +177,7 @@ const SupplierScorecardGrid: React.FC<SupplierScorecardProps> = (props) => {
             {processedRows.length === 0 ? (
               <tr>
                 <td colSpan={dataLabels.length + 2} style={emptyStyle}>
-                  No data found
+                  No data available
                 </td>
               </tr>
             ) : (

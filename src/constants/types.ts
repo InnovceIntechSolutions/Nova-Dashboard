@@ -27,6 +27,7 @@ export interface WidgetProps {
 
 export interface WidgetLayout {
   id: string;
+  title?: string;
   type: string;
   component: string;
   apitype: string; 

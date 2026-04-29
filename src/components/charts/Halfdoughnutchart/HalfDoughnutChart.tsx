@@ -69,6 +69,13 @@ const HalfDoughnutChart: React.FC<BaseChartProps> = ({ data, options = {} }) => 
     };
   }, [data, dataset, options]);
 
+if (data.datasets[0]?.data.length === 0) {
+    return (
+      <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '200px' }}>
+        No data available
+      </div>
+    );
+  }
   return (
     <ReactECharts
       option={echartsOption}

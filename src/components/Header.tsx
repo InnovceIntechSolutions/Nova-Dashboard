@@ -99,15 +99,24 @@ const handleSearch = () => {
     setSelectedMonth(idx);
     setMonthDropdownOpen(false);
   };
+const handleReset = () => {
+  setDocType(null);
+  setInputText('');
+  setDateFilter(null);
+  setSelectedMonth(null);
+  setFromDate('');
+  setToDate('');
 
+  setFilters({
+    invoiceNumber: '',
+    poNumber: '',
+    fromDate: '',
+    toDate: '',
+    month: '',
+  });
+};
   const todayStr = new Date().toISOString().split('T')[0];
 
-  // Search button is enabled when a date/month selection is complete
-  const dateReady =
-    (dateFilter === 'MONTH' && selectedMonth !== null) ||
-    (dateFilter === 'DATE RANGE' && fromDate && toDate);
-
-  const showSearchBtn = docType && dateReady;
 
   return (
     <>
@@ -151,7 +160,9 @@ const handleSearch = () => {
                 </div>
               )}
             </div>
-
+                {/* 6. Search Button — appears only when doc type + date/month are both selected */}
+          
+          
             {/* 2. Plain text input — shown when PO or INVOICE is selected */}
             {docType && (
               <input
@@ -163,7 +174,7 @@ const handleSearch = () => {
                 autoFocus
               />
             )}
-
+       
             {/* 3. Date Filter Dropdown (MONTH / CUSTOM) */}
             <div className="sup-dropdown" ref={dateRef}>
               <button
@@ -255,13 +266,14 @@ const handleSearch = () => {
               </div>
             )}
 
-            {/* 6. Search Button — appears only when doc type + date/month are both selected */}
-            {showSearchBtn && (
-              <button className="sup-search-btn" type="button" onClick={handleSearch}>
+            <button className="sup-search-btn" type="button" onClick={handleSearch}>
                 <SearchIcon />
                 Search
               </button>
-            )}
+               <button className="sup-search-btn" type="button" onClick={handleReset}>
+                <SearchIcon />
+                Reset
+              </button>
 
           </div>
         </div>
