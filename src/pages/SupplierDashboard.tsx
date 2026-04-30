@@ -19,8 +19,10 @@ import SupplierScorecardGrid from '../components/Grid';
 import IssuesDeviations from '../components/IssueDeviations';
 import PaymentTrend from '../components/PaymentTrend';
 import InvoiceBreakdown from '../components/Invoicebreakdown';
+import { useParams, useSearchParams } from 'react-router-dom';
 interface DashboardProps {
   layoutData: WidgetLayout[];
+  title?: string;
 }
 
 const componentMap: Record<string, React.ComponentType<any>> = {
@@ -37,15 +39,16 @@ const componentMap: Record<string, React.ComponentType<any>> = {
   QuickActions,
   HeatmapChart,
   Table: SupplierScorecardGrid,
-
   IssuesDeviations,
   PaymentTrend,
   InvoiceBreakdown
 };
 
-const SupplierDashboard: React.FC<DashboardProps> = ({ layoutData }) => {
+const SupplierDashboard: React.FC<DashboardProps> = ({ layoutData ,title}) => {
   const [dataMap, setDataMap] = useState<Record<string, any>>({});
   const { filters } = useSearch();
+  const searchParams = useSearchParams();
+  const name = searchParams[0].get('name') ?? undefined;
   // Re-fetch whenever filters change
   useEffect(() => {
     const loadData = async () => {
@@ -59,7 +62,7 @@ const SupplierDashboard: React.FC<DashboardProps> = ({ layoutData }) => {
               const data = await fetchDashboardData(
                 type,
                 item.endpoint,
-                item.param,
+                name,
                 item.slotId,
                 filters           // pass filters here
               );
@@ -146,7 +149,7 @@ const SupplierDashboard: React.FC<DashboardProps> = ({ layoutData }) => {
 
   return (
     <>
-      <Header />
+      <Header title={title} />
       <div className="container" style={{ maxWidth: '1600px' }}>
         {sortedRows.map((row) => {
           const widgets = groupedByRow[row];

@@ -17,9 +17,10 @@ import QuickActions from '../components/QuickActions';
 import HeatmapChart from '../components/Heatmap/HeatmapOnCartesian';
 import SupplierScorecardGrid from '../components/Grid';
 import { useSearch } from '../Context/SearchContext';
-
+import { useSearchParams } from 'react-router-dom';
 interface DashboardProps {
   layoutData: WidgetLayout[];
+  title?: string;
 }
 
 const componentMap: Record<string, React.ComponentType<any>> = {
@@ -39,9 +40,11 @@ const componentMap: Record<string, React.ComponentType<any>> = {
   Table: SupplierScorecardGrid, 
 };
 
-const BuyerDashboard: React.FC<DashboardProps> = ({ layoutData }) => {
+const BuyerDashboard: React.FC<DashboardProps> = ({ layoutData, title }) => {
   const [dataMap, setDataMap] = useState<Record<string, any>>({});
  const {filters} = useSearch();
+    const searchParams = useSearchParams();
+    const name = searchParams[0].get('name') ?? undefined;
  // Re-fetch whenever filters change
 useEffect(() => {
   const loadData = async () => {
@@ -55,7 +58,7 @@ useEffect(() => {
             const data = await fetchDashboardData(
               type,
               item.endpoint,
-              item.param,
+              name,
               item.slotId,
               filters           // pass filters here
             );
@@ -129,7 +132,7 @@ useEffect(() => {
 
   return (
     <>
-      <Header />
+      <Header title={title} />
       <div className="container"style={{ maxWidth: '1600px' }}>
         {sortedRows.map((row) => {
           const widgets = groupedByRow[row];

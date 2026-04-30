@@ -1,5 +1,7 @@
+
 {
   "dashboard": {
+    "title": "Supplier Portal - Welcome Back, ABC Suppliers Ltd",
     "layout": [
     
        {
@@ -7,7 +9,6 @@
         "type": "component",
         "component": "StatsCard",
         "endpoint": "Payment Received",
-         "param": "Vertiv India - Pune Plant",
          "apitype":"Status Card",
         "position": {
           "row": 1,
@@ -21,7 +22,6 @@
         "component": "StatsCard",
         "endpoint": "Quality Score",
         "apitype":"Status Card",
-         "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 1,
           "column": 2,
@@ -34,7 +34,6 @@
         "component": "StatsCard",
         "endpoint": "Active POs",
         "apitype":"Status Card",
-         "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 1,
           "column": 3,
@@ -47,7 +46,6 @@
         "component": "StatsCard",
         "endpoint": "Invoices This Month",
         "apitype":"Status Card",
-         "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 1,
           "column": 4,
@@ -62,7 +60,6 @@
         "component": "TaskList",
         "endpoint": "Action Required",
         "apitype": "TaskList",
-         "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 3,
           "column": 2,
@@ -76,7 +73,6 @@
   "component": "Timeline",        
   "endpoint": "Recent Activity",
   "apitype": "Line",
-  "param": "Vertiv India - Pune Plant",
   "position": {
     "row": 2,
     "column": 2,
@@ -90,7 +86,6 @@
   "component": "FinancialSummary",
   "endpoint": "Financial Summary",
   "apitype": "Table-column",
-  "param": "Vertiv India - Pune Plant",
   "position": {
     "row": 2,
     "column": 2,
@@ -105,8 +100,6 @@
   "endpoint": "Payment Trend",
   "apitype": "Table-Details",
     "chartType": "line",
-     "param": "Vertiv India - Pune Plant",
-  
   "position": {
     "row": 3,
     "column": 1,
@@ -120,7 +113,6 @@
   "component": "QuickActions",
   "endpoint": "QuickActions",
   "apitype": "quick_actions",
-  "param": "Vertiv India - Pune Plant",
   "position": {
     "row": 5,
     "column": 1,

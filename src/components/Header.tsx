@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { headerStyles } from './Header.styles';
 import { useSearch } from '../Context/SearchContext';
 
-
-
 export interface HeaderProps {
   title?: string;
   subtitle?: string;
@@ -27,10 +25,7 @@ const SearchIcon = () => (
 );
 
 const Header: React.FC<HeaderProps> = ({ title }) => {
-  const config = {
-    props: { title: 'Supplier Portal - Welcome Back, ABC Suppliers Ltd' },
-  };
-  const { title: configTitle } = config.props;
+  const configTitle = title 
 
   const currentYear = new Date().getFullYear();
   const currentMonthIndex = new Date().getMonth();

@@ -107,8 +107,8 @@ const App: React.FC = () => {
     <SearchProvider>
       <Routes>
         <Route path="/"         element={<Dashboard         layoutData={layoutData}         />} />
-        <Route path="/supplier" element={<SupplierDashboard layoutData={supplierLayoutData} />} />
-        <Route path="/buyer"    element={<BuyerDashboard    layoutData={buyerLayoutData}    />} />
+        <Route path="/supplier/" element={<SupplierDashboard layoutData={supplierLayoutData} title={SupplierdashboardConfig.dashboard.title} />} />
+        <Route path="/buyer/"    element={<BuyerDashboard    layoutData={buyerLayoutData}  title={BuyerdashboardConfig.dashboard.title}  />} />
         <Route path="*"         element={<Navigate to="/" replace />} />
       </Routes>
     </SearchProvider>

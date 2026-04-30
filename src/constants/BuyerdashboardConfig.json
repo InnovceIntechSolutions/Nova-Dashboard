@@ -1,5 +1,6 @@
 {
   "dashboard": {
+    "title": "Buyer Portal - Welcome Back, ABC Team",
     "layout": [
       
       {
@@ -8,7 +9,6 @@
         "component": "StatsCard",
         "endpoint": "Pending Invoices",
         "apitype": "Status Card",
-         "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 1,
           "column": 1,
@@ -21,7 +21,6 @@
         "type": "component",
         "component": "StatsCard",
         "endpoint": "Active Suppliers",
-          "param": "Vertiv India - Pune Plant",
           "apitype": "Status Card",
         "position": {
           "row": 1,
@@ -35,7 +34,6 @@
         "type": "component",
         "component": "StatsCard",
         "endpoint": "Supplier Performance",
-         "param": "Vertiv India - Pune Plant",
          "apitype": "Status Card",
         "position": {
           "row": 1,
@@ -49,7 +47,6 @@
         "type": "component",
         "component": "StatsCard",
         "endpoint": "Open POS",
-         "param": "Vertiv India - Pune Plant",
          "apitype": "Status Card",
         "position": {
           "row": 1,
@@ -65,7 +62,6 @@
         "endpoint": "Action Required",
         "apitype": "TaskList",
         "title": "Action Required",
-         "param": "Vertiv India - Pune Plant",
         "position": {
           "row": 3,
           "column": 1,
@@ -81,7 +77,6 @@
   "apitype": "Bar-line",
   "title": "Spend vs Budget",
     "chartType": "Bar-line",
-     "param": "Vertiv India - Pune Plant",
     "slotId": "074CD6F44-1FAD-4499-911C-9092395EDE61C3BEA3AF-C9B7-4DEA-AE35-EA1C626191C00314393C-29B4-4E60-8D11-595EDAAAC42F00",
   "position": {
     "row": 4,
@@ -96,7 +91,6 @@
   "component": "Table",  
   "endpoint": "Supplier ScoreCard",     
   "title": "Supplier ScoreCard",
-  "param": "Vertiv India - Pune Plant",
   "apitype": "Table",
   "slotId": "074CD6F44-1FAD-4499-911C-9092395EDE61C3BEA3AF-C9B7-4DEA-AE35-EA1C626191C00314393C-29B4-4E60-8D11-595EDAAAC42F00",
   "position": {
@@ -112,7 +106,6 @@
   "type": "component",
   "component": "Chart",
   "endpoint": "Category Wise Spend",
-   "param": "VERTIV ENERGY PRIVATE LIMITED",
    "title":"Category-Wise Spend",
    "apitype": "Bar",
   "chartType": "Bar",
@@ -129,7 +122,6 @@
   "component": "Timeline",        
   "endpoint": "Recent Activity",
   "apitype": "Line",
-  "param": "Vertiv India - Pune Plant",
   "position": {
     "row": 5,
     "column": 1,
@@ -191,7 +183,6 @@
   "component": "QuickActions",
   "endpoint": "QuickActions",
   "apitype": "quick_actions",
-  "param": "Vertiv India - Pune Plant",
   "position": {
     "row": 6,
     "column": 1,
