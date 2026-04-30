@@ -113,6 +113,20 @@
     "span": 6
   }
 },
+{
+  "id": "QUICK ACTIONS",
+  "title": "QUICK ACTIONS",
+  "type": "component", 
+  "component": "QuickActions",
+  "endpoint": "QuickActions",
+  "apitype": "quick_actions",
+  "param": "Vertiv India - Pune Plant",
+  "position": {
+    "row": 5,
+    "column": 1,
+    "span": 12
+  }
+},
       {
   "id": "issues_deviations",
   "type": "component",
@@ -152,31 +166,8 @@
       { "label": "Avg Payment Cycle",            "value": "28 days",    "color": "default" }
     ]
   }
-},
- {
-        "id": "quick_actions",
-        "type": "component",
-        "component": "QuickActions",
-        "props": {
-          "actions": [
-            {
-              "label": "Create PO",
-              "icon": "➕",
-              "action": "/po/create"
-            },
-            {
-              "label": "Approve Invoice",
-              "icon": "✔️",
-              "action": "/invoice/approve"
-            }
-          ]
-        },
-        "position": {
-          "row": 5,
-          "column": 1,
-          "span": 12
-        }
-      }
+}
+ 
 
      
   ]

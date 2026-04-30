@@ -123,32 +123,19 @@
   }
 },
  {
-        "id": "recent_activity",
-        "type": "component",
-        "component": "Timeline",
-        "props": {
-          "title": "📅 RECENT ACTIVITY",
-          "events": [
-            {
-              "id": "e1",
-              "icon": "🟢",
-              "title": "Invoice Approved",
-              "timestamp": "Today"
-            },
-            {
-              "id": "e2",
-              "icon": "🔵",
-              "title": "PO Created",
-              "timestamp": "Yesterday"
-            }
-          ]
-        },
-        "position": {
-          "row": 5,
-          "column": 1,
-          "span": 6
-        }
-      },
+  "id": "Recent Activity",
+  "title": "RECENT ACTIVITY",
+  "type": "component",
+  "component": "Timeline",        
+  "endpoint": "Recent Activity",
+  "apitype": "Line",
+  "param": "Vertiv India - Pune Plant",
+  "position": {
+    "row": 5,
+    "column": 1,
+    "span": 6
+  }
+},
       {
   "id": "procurement_summary",
   "type": "component",
@@ -198,29 +185,19 @@
   }
 },
       {
-        "id": "quick_actions",
-        "type": "component",
-        "component": "QuickActions",
-        "props": {
-          "actions": [
-            {
-              "label": "Create PO",
-              "icon": "➕",
-              "action": "/po/create"
-            },
-            {
-              "label": "Approve Invoice",
-              "icon": "✔️",
-              "action": "/invoice/approve"
-            }
-          ]
-        },
-        "position": {
-          "row": 6,
-          "column": 1,
-          "span": 12
-        }
-      }
+  "id": "QUICK ACTIONS",
+  "title": "QUICK ACTIONS",
+  "type": "component", 
+  "component": "QuickActions",
+  "endpoint": "QuickActions",
+  "apitype": "quick_actions",
+  "param": "Vertiv India - Pune Plant",
+  "position": {
+    "row": 6,
+    "column": 1,
+    "span": 12
+  }
+}
   ]
   }
 }

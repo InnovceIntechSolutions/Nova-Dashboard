@@ -126,7 +126,7 @@ export const headerStyles = `
   }
 
   /* Search button */
-  .sup-search-btn {
+  .sup-search-btn,.sup-reset-btn {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -146,7 +146,14 @@ export const headerStyles = `
     background: #2563b8;
     box-shadow: 0 4px 14px rgba(59,125,216,0.30);
   }
-  .sup-search-btn:active {
+    .sup-reset-btn {
+      background: #f06f86;
+    }
+  .sup-reset-btn:hover {
+    background: #e94664;
+    box-shadow: 0 4px 14px rgba(240,111,134,0.30);
+  }
+  .sup-search-btn:active, .sup-reset-btn:active {
     transform: scale(0.97);
   }
   .sup-search-btn svg {

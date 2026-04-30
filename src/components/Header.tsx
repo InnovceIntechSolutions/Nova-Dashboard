@@ -270,8 +270,7 @@ const handleReset = () => {
                 <SearchIcon />
                 Search
               </button>
-               <button className="sup-search-btn" type="button" onClick={handleReset}>
-                <SearchIcon />
+               <button className="sup-reset-btn" type="button" onClick={handleReset}>
                 Reset
               </button>
 
